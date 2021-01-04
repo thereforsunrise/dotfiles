@@ -4,12 +4,11 @@ font pango:Inconsolata Medium 18
 
 floating_modifier $mod
 
-bindsym $mod+x exec gnome-terminal --working-directory="`xcwd`"
+bindsym $mod+x exec shell.sh
 
 bindsym $mod+c kill
-bindsym $mod+d exec dmenu_run -nb "#2F343F" -sb white -sf black -fn "Inconsolata Medium-24" -p "> "
-bindsym $mod+p exec dmenu_run -nb "#2F343F" -sb white -sf black -fn "Inconsolata Medium-24" -p "> "
-bindsym $mod+u exec dmenu -nb "#2F343F" -sb white -sf black -fn "Inconsolata Medium-24" -p "time > "
+bindsym $mod+d exec set-wd-for-ws.sh
+bindsym $mod+p exec run.sh
 bindsym $mod+Shift+r restart
 
 bindsym $mod+j focus left
@@ -165,7 +164,7 @@ bar {
     active_workspace   #595B5B #353836 #FDF6E3
     inactive_workspace #595B5B #2F343F #49505F
     binding_mode       #232729 #2C2C2C #F9FAF9
-    urgent_workspace   #232729 #FDF6E3 #E5201D
+    urgent_workspace   #595B5B #2F343F #49505F
   }
 }
 
@@ -175,4 +174,4 @@ assign [class="Google-chrome"] $ws1
 assign [class="BrainDump"] $ws0
 assign [class="Slack"] $ws8
 
-for_window [class="^.*"] border pixel 0, urgency disable
+for_window [class=".*"] border pixel 0
