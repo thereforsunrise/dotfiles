@@ -38,17 +38,6 @@ install_stow() {
   fi
 }
 
-install_xcwd() {
-  if [ ! -f /usr/bin/xcwd ]; then
-    git clone https://github.com/schischi/xcwd.git "$HOME/Projects/xcwd"
-    (
-      cd "$HOME/Projects/xcwd"
-      make
-      make install
-    )
-  fi
-}
-
 install_antigen() {
   if [ ! -f ~/Projects/antigen.zsh ]; then
     echo "Installing antigen..."
@@ -124,7 +113,6 @@ echo -e "Checking into $HOSTNAME...\n"
 setup_secret
 checkout_scripts
 install_stow
-install_xcwd
 install_antigen
 run_stow
 change_shell
