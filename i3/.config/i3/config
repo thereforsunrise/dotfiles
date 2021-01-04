@@ -4,7 +4,7 @@ font pango:Inconsolata Medium 18
 
 floating_modifier $mod
 
-bindsym $mod+x exec gnome-terminal
+bindsym $mod+x exec gnome-terminal --working-directory="`xcwd`"
 
 bindsym $mod+c kill
 bindsym $mod+d exec dmenu_run -nb "#2F343F" -sb white -sf black -fn "Inconsolata Medium-24" -p "> "
@@ -65,12 +65,15 @@ bindsym $mod+minus focus mode_toggle
 bindsym $mod+a focus parent
 
 set $ws1 "1:www"
-set $ws2 "2:project1"
-set $ws3 "3:project2"
-set $ws4 "4:project3"
-set $ws5 "5:project4"
-set $ws6 "6:media"
-set $ws7 "7:slack"
+set $ws2 "2:project2"
+set $ws3 "3:project3"
+set $ws4 "4:project4"
+set $ws5 "5:project5"
+set $ws6 "6:project6"
+set $ws7 "7:media"
+set $ws8 "8:slack"
+set $ws9 "9:discord"
+set $ws0 "0:braindump"
 
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -79,9 +82,9 @@ bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws0
 
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
@@ -90,9 +93,9 @@ bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws0
 
 bindsym $mod+Shift+b border toggle
 
@@ -110,7 +113,7 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-set $Locker i3lock i3lock -i ~/Dropbox/Media/images/wallpapers/92i3mebsma021.png && sleep 1
+set $Locker lock.sh
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
@@ -125,16 +128,16 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 bindsym Pause mode "$mode_system"
-bindsym Print exec scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/media/images'
-bindsym $mod+Home  exec ~/Projects/scripts/toggle-sink.sh
+bindsym Print exec screenshot.sh
+bindsym $mod+Home  exec toggle-sink.sh
+
+bindsym $mod+Prior exec volume.sh up
+bindsym $mod+Next exec volume.sh down
 
 bindsym $mod+Shift+space move scratchpad
 bindsym $mod+space scratchpad show
 
-#bindsym $mod+Tab exec rofi  -show window -theme ~/.onedark.rasi
-#bindsym $mod+Tab exec --no-startup-id rofi -theme ~/.onedark.rasi -modi combi -combi-modi window -show combi
-#bindsym $mod+Tab exec i3-msg "[con_id=$(cat /tmp/last_focus)] focus"
-#bindsym $mod+Tab exec rofi  -show window
+bindsym $mod+Shift+Tab exec --no-startup-id rofi -theme ~/.onedark.rasi -show window
 bindsym $mod+Tab workspace back_and_forth
 
 client.focused          $base05 $base0D $base00 $base0D $base0C
@@ -169,9 +172,7 @@ bar {
 assign [class="Firefox"] $ws1
 assign [class="Chromium"] $ws1
 assign [class="Google-chrome"] $ws1
-assign [class="BrainDump"] $ws5
-assign [class="Slack"] $ws7
+assign [class="BrainDump"] $ws0
+assign [class="Slack"] $ws8
 
-for_window [class="^.*"] border pixel 0
-for_window [class="Google-chrome"] urgency disable
-for_window [class="BrainDump"] urgency disable
+for_window [class="^.*"] border pixel 0, urgency disable
