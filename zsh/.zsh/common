@@ -1,3 +1,5 @@
+export CODEDIR="$HOME/Projects"
+export WALLPAPER_DIR="$HOME/Dropbox/Media/images/wallpaper"
 export PAGER="/usr/bin/less"
 export PATH="$HOME/bin:$CODEDIR/scripts:/sbin:$PATH"
 export VISUAL="/usr/bin/vim"

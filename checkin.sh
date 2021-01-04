@@ -4,7 +4,11 @@
 # according to stack overflow :-(
 SCRIPTPATH="$(cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P)"
 
-mkdir -p ~/Projects
+mkdir -p "$HOME/Projects"
+
+if [ ! -L "$HOME/Projects/dotfiles"]; then
+  ln -s "$HOME/.dotfiles/" "$HOME/Projects/dotfiles"
+fi
 
 setup_secret() {
   if [ ! -f "$HOME/.secret" ]; then
@@ -81,6 +85,28 @@ EOF
   fi
 }
 
+generate_msmtprc() {
+  source ~/.secret
+
+  cat <<EOF > "$HOME/.msmtprc"
+account fastmail
+host mail.messagingengine.com
+from $MSMTP_EMAIL
+
+auth on
+user $MSMTP_EMAIL
+password $MSMTP_PASSWORD
+
+tls on
+tls_starttls off
+tls_fingerprint "48:50:EB:01:67:E8:22:24:1A:B1:74:F4:B5:0A:98:16:F4:06:92:97:70:76:92:AF:B0:EE:0D:4D:89:6E:4A:09"
+
+syslog LOG_MAIL
+account default : fastmail
+EOF
+
+}
+
 echo -e "Checking into $HOSTNAME...\n"
 
 setup_secret
@@ -90,3 +116,4 @@ install_antigen
 run_stow
 change_shell
 generate_gitconfigs
+generate_msmtprc
