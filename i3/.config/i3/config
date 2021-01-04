@@ -131,8 +131,8 @@ bindsym $mod+Home  exec ~/Projects/code/scripts/toggle-sink.sh
 bindsym $mod+Shift+space move scratchpad
 bindsym $mod+space scratchpad show
 
-#bindsym $mod+Tab exec rofi  -show window -theme ~/doc/onedark.rasi
-#bindsym $mod+Tab exec --no-startup-id rofi -theme ~/onedark.rasi -modi combi -combi-modi window -show combi
+#bindsym $mod+Tab exec rofi  -show window -theme ~/.onedark.rasi
+#bindsym $mod+Tab exec --no-startup-id rofi -theme ~/.onedark.rasi -modi combi -combi-modi window -show combi
 #bindsym $mod+Tab exec i3-msg "[con_id=$(cat /tmp/last_focus)] focus"
 #bindsym $mod+Tab exec rofi  -show window
 #bindsym $mod+Tab workspace back_and_forth
@@ -182,4 +182,3 @@ assign [class="Slack"] $ws6
 
 for_window [class="Google-chrome"] urgency disable
 for_window [class="BrainDump"] urgency disable
-
