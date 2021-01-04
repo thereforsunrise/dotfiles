@@ -5,6 +5,7 @@
 SCRIPTPATH="$(cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P)"
 
 mkdir -p "$HOME/Projects"
+mkdir -p "$HOME/.msmtpqueue"
 
 if [ ! -L "$HOME/Projects/dotfiles" ]; then
   ln -s "$HOME/.dotfiles/" "$HOME/Projects/dotfiles"
@@ -34,6 +35,17 @@ install_stow() {
   if ! dpkg -l | grep stow &>/dev/null; then
     echo "Installing stow..."
     sudo apt install -y stow
+  fi
+}
+
+install_xcwd() {
+  if [ ! -f /usr/bin/xcwd ]; then
+    git clone https://github.com/schischi/xcwd.git "$HOME/Projects/xcwd"
+    (
+      cd "$HOME/Projects/xcwd"
+      make
+      make install
+    )
   fi
 }
 
@@ -112,6 +124,7 @@ echo -e "Checking into $HOSTNAME...\n"
 setup_secret
 checkout_scripts
 install_stow
+install_xcwd
 install_antigen
 run_stow
 change_shell
