@@ -44,3 +44,10 @@ EOBUNDLES
 antigen theme dracula/zsh
 
 antigen apply
+
+dockernuke() {
+  docker ps -a | \
+    tail -n+2 | \
+    awk '{ print $1 }' | \
+    xargs docker rm -f {}
+}
