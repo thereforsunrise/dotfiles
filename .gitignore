@@ -1,0 +1,6 @@
+~/.gitconfig_local
+*.zwc
+vim/.vim/.netrwhist
+secret
+password
+*.swp

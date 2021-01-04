@@ -1,0 +1,24 @@
+export EDITOR="/usr/bin/vim"
+export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH="/usr/local/bin:$HOME/.rbenv/bin:$PATH"
+export PATH="/usr/local/opt/coreutils/bin:$PATH"
+# use golang from homebrew
+export PATH="/usr/local/opt/go/libexec/bin:$PATH"
+# prefer gnu versions of unix comands
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
+export GOPATH=$HOME/go
+
+alias ack-grep='ack'
+alias la='gls -a'
+alias less='less -R'
+alias ll='gls -l'
+alias ls='gls --color=always'
+alias code="cd $CODE_DIR"
+
+[ -f ~/.dir_colors ] && eval $(dircolors ~/.dir_colors)
+
+eval "$(rbenv init -)"
+
+export PATH=

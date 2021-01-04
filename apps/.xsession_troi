@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+feh --bg-fill ~/Media/images/polygon-mountains-minimalist-r3.jpg &
+cbatticon &

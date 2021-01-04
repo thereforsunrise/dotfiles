@@ -1,0 +1,59 @@
+[user]
+  # set in ~/.gitconfig_local
+
+[include]
+  path = ~/.gitconfig_local
+
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = true
+  pager = true
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[core]
+  pager = less -FRSX
+  whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+  excludesfile = /Users/jgray/.gitignore_global
+
+[alias]
+  br = branch
+  c = commit -m
+  ca = commit -am
+  ci = commit -a
+  co = checkout
+  head = !"git log -n1"
+  heads = !"git log origin/master.. --format='%Cred%h%Creset;%C(yellow)%an%Creset;%H;%Cblue%f%Creset' | git name-rev --stdin --always --name-only | column -t -s';'"
+  l = !"git lg1"
+  lg = log --pretty=format:'%C(bold blue)%h%Creset -%C(bold green)(%ar)%Creset %s %Cgreen %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit
+  lg1 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+  lg2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)— %an%C(reset)' --abbrev-commit
+  lost = !"git fsck | awk '/dangling commit/ {print }' | git show --format='SHA1: %C(yellow)%h%Creset %f' --stdin | awk '/SHA1/ {sub(\"SHA1: \", \"\"); print}'"
+  pr = !"git fetch;git wip;git rebase --stat origin;git unwip;git heads"
+  rb = !"git wip;git rebase -i origin/master;git unwip"
+  st = status
+  st = status
+  today = !"git lg --graph --all --since=midnight"
+  unwip = !"git log -n 1 | grep -q -c wip && git reset HEAD~1"
+  wip = !"git add -A; git ls-files --deleted -z | xargs -0 git rm; git commit -m \"wip\""
+  yesterday = !"git lg --graph --all --since=day.before.yesterday.midnight --until=midnight"
+
+[push]
+  default = simple

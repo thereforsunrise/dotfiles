@@ -1,0 +1,19 @@
+command=/usr/share/i3blocks/$BLOCK_NAME
+separator_block_width=15
+markup=none
+
+[pomodoro]
+command=/home/jg/src/i3-pomodoro/src/pomodoro/pomodoro.py
+interval=1
+
+#[weather]
+#command=cat /home/jg/.weather
+#interval=1
+
+#[moon]
+#command=cat /home/jg/.moon
+#interval=1
+
+[time]
+command=date '+%Y-%m-%d %H:%M'
+interval=1
