@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-export PATH="$HOME/bin:$HOME/Projects/code/scripts:$PATH"
-
 source ~/.zsh/common
 
 random-background.sh &
