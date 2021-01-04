@@ -1,5 +1,5 @@
 export CODEDIR="$HOME/Projects"
-export WALLPAPER_DIR="$HOME/Dropbox/Media/images/wallpaper"
+export DRACULA_DISPLAY_CONTEXT=1
 export PAGER="/usr/bin/less"
 export PATH="$HOME/bin:$CODEDIR/scripts:/sbin:$PATH"
 export VISUAL="/usr/bin/vim"
