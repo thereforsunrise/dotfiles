@@ -1,9 +1,7 @@
 
-export PATH="$HOME/.rbenv/bin:$HOME/src/code/scripts:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$HOME/.local/bin:$PATH"
 
 alias agu='sudo apt-get update'
-
 alias agi='sudo apt-get install -y'
 alias acs='sudo apt-cache search'
 alias down='shutdown now'
@@ -15,7 +13,7 @@ export NVM_DIR="$HOME/.nvm"
 
 source "$NVM_DIR/nvm.sh"
 
-function update {
+update() {
   sudo apt-get update
   sudo apt-get dist-upgrade
 }

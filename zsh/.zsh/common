@@ -1,7 +1,3 @@
-export CODEDIR="$HOME/Projects"
-
-[ ! -e "$CODEDIR" ] && mkdir -p "$CODEDIR"
-
 export PAGER="/usr/bin/less"
 export PATH="$HOME/bin:$CODEDIR/scripts:/sbin:$PATH"
 export VISUAL="/usr/bin/vim"
@@ -13,28 +9,8 @@ alias gp='git push'
 alias gpr='git pull --rebase'
 alias gs="git status"
 alias gu='git add -u'
-
-function mv() {
-  if [ "$#" -ne 1 ] || [ ! -f "$1" ]; then
-    command mv "$@"
-    return
-  fi
-
-  read -ei "$1" newfilename
-  command mv -v -- "$1" "$newfilename"
-}
-
-function sunrisedeploy {
-  ssh sunrise "cd src/code; git pull; ./deploy.sh"
-}
-
-# clearly this is terrible practice but I use it on my personal projects when I
-# care more about pushing than good commit messages necesarily
-function hack {
-  git add -A .
-  git commit -m "hack"
-}
-
+alias mailq='msmtp-listqueue.sh'
+alias mailr='msmtp-runqueue.sh'
 
 [[ -e "$HOME/.secret" ]] && \
   source "$HOME/.secret"
@@ -66,7 +42,3 @@ EOBUNDLES
 antigen theme dracula/zsh
 
 antigen apply
-
-
-alias mailr='msmtp-runqueue.sh'
-alias mailq='msmtp-listqueue.sh'

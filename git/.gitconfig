@@ -1,8 +1,6 @@
 [user]
-  # set in ~/.gitconfig_local
-
-[include]
-  path = ~/.gitconfig_local
+  name = "James Gray"
+  email = "zaargy@gmail.com"
 
 [color]
   diff = auto

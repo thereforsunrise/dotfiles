@@ -15,6 +15,17 @@ setup_secret() {
   fi
 }
 
+checkout_scripts() {
+  if [ ! -d ~/Projects/scripts ]; then
+    git clone git@github.com:zaargy/scripts.git ~/Projects/scripts
+  else
+    (
+      cd ~/Projects/scripts
+      git pull
+    )
+  fi
+}
+
 install_stow() {
   if ! dpkg -l | grep stow &>/dev/null; then
     echo "Installing stow..."
@@ -73,6 +84,7 @@ EOF
 echo -e "Checking into $HOSTNAME...\n"
 
 setup_secret
+checkout_scripts
 install_stow
 install_antigen
 run_stow
