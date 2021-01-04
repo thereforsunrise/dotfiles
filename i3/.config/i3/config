@@ -175,3 +175,4 @@ assign [class="BrainDump"] $ws0
 assign [class="Slack"] $ws8
 
 for_window [class=".*"] border pixel 0
+for_window [class=".*"] urgency disable
