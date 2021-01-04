@@ -6,7 +6,7 @@ SCRIPTPATH="$(cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P)"
 
 mkdir -p "$HOME/Projects"
 
-if [ ! -L "$HOME/Projects/dotfiles"]; then
+if [ ! -L "$HOME/Projects/dotfiles" ]; then
   ln -s "$HOME/.dotfiles/" "$HOME/Projects/dotfiles"
 fi
 
