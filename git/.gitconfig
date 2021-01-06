@@ -1,6 +1,8 @@
-[user]
-  name = "James Gray"
-  email = "zaargy@gmail.com"
+[includeIf "gitdir:~/Projects/work/"]
+  path = ~/.gitconfig_work
+
+[includeIf "gitdir:~/Projects/"]
+  path = ~/.gitconfig_personal
 
 [color]
   diff = auto
