@@ -11,6 +11,8 @@ bindsym $mod+d exec set-wd-for-ws.sh
 bindsym $mod+p exec run.sh
 bindsym $mod+Shift+r restart
 
+bindsym $mod+u exec set-ws-name.sh
+
 bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
@@ -63,38 +65,38 @@ bindsym $mod+minus focus mode_toggle
 
 bindsym $mod+a focus parent
 
-set $ws1 "1:www"
-set $ws2 "2:project2"
-set $ws3 "3:project3"
-set $ws4 "4:project4"
-set $ws5 "5:project5"
-set $ws6 "6:project6"
-set $ws7 "7:media"
-set $ws8 "8:slack"
-set $ws9 "9:discord"
-set $ws0 "0:braindump"
+set $ws1 "1www"
+set $ws2 "2project2"
+set $ws3 "3project3"
+set $ws4 "4project4"
+set $ws5 "5project5"
+set $ws6 "6project6"
+set $ws7 "7media"
+set $ws8 "8slack"
+set $ws9 "9discord"
+set $ws0 "0braindump"
 
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws0
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws0
 
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws0
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws0
 
 bindsym $mod+Shift+b border toggle
 
@@ -153,6 +155,7 @@ bar {
   tray_output primary
 
   workspace_buttons yes
+  strip_workspace_numbers yes
 
   mode hide
 
@@ -176,3 +179,5 @@ assign [class="Slack"] $ws8
 
 for_window [class=".*"] border pixel 0
 for_window [class=".*"] urgency disable
+
+
