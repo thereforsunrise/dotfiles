@@ -80,10 +80,6 @@ EOF
     name = $GIT_NAME
     email = $GIT_PERSONAL_EMAIL
 EOF
-
-  if [ ! -L ~/.gitconfig_local ]; then
-    ln -s ~/.gitconfig_personal ~/.gitconfig_local
-  fi
 }
 
 generate_msmtprc() {
