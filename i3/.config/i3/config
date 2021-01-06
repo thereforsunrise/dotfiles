@@ -7,11 +7,10 @@ floating_modifier $mod
 bindsym $mod+x exec shell.sh
 
 bindsym $mod+c kill
-bindsym $mod+d exec set-wd-for-ws.sh
 bindsym $mod+p exec run.sh
 bindsym $mod+Shift+r restart
 
-bindsym $mod+u exec set-ws-name.sh
+bindsym $mod+u exec set-wd-for-ws.sh
 
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -65,16 +64,15 @@ bindsym $mod+minus focus mode_toggle
 
 bindsym $mod+a focus parent
 
-set $ws1 "1www"
-set $ws2 "2project2"
-set $ws3 "3project3"
-set $ws4 "4project4"
-set $ws5 "5project5"
-set $ws6 "6project6"
-set $ws7 "7media"
-set $ws8 "8slack"
-set $ws9 "9discord"
-set $ws0 "0braindump"
+set $ws1 "1 braindump"
+set $ws2 "2 www"
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 "9 slack"
 
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
@@ -85,7 +83,6 @@ bindsym $mod+6 workspace number $ws6
 bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws0
 
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
@@ -155,7 +152,6 @@ bar {
   tray_output primary
 
   workspace_buttons yes
-  strip_workspace_numbers yes
 
   mode hide
 
@@ -171,13 +167,14 @@ bar {
   }
 }
 
-assign [class="Firefox"] $ws1
-assign [class="Chromium"] $ws1
-assign [class="Google-chrome"] $ws1
-assign [class="BrainDump"] $ws0
-assign [class="Slack"] $ws8
+assign [class="BrainDump"] $ws1
+assign [class="Firefox"] $ws2
+assign [class="Chromium"] $ws2
+assign [class="Google-chrome"] $ws2
+#assign [class="Slack"] $ws9
 
 for_window [class=".*"] border pixel 0
 for_window [class=".*"] urgency disable
 
+workspace_auto_back_and_forth yes
 
