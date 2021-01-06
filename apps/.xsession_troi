@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-feh --bg-fill ~/Media/images/polygon-mountains-minimalist-r3.jpg &
+feh --bg-fill "$WALLPAPER_DIR/polygon-mountains-minimalist-r3.jpg" &
 cbatticon &
