@@ -52,7 +52,7 @@ run_stow() {
     -type d \
     -not \
     -name ".*" \
-    -exec basename {} \; | \
+    -exec basename {} \; | sort | \
   while read stow_package; do
     echo "Stowing $stow_package..."
     stow --adopt "$stow_package"
