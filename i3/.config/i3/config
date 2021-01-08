@@ -64,8 +64,9 @@ bindsym $mod+minus focus mode_toggle
 
 bindsym $mod+a focus parent
 
-set $ws1 "1 braindump"
-set $ws2 "2 www"
+set $ws0 "0 braindump"
+set $ws1 "1 www"
+set $ws2 2
 set $ws3 3
 set $ws4 4
 set $ws5 5
@@ -74,6 +75,7 @@ set $ws7 7
 set $ws8 8
 set $ws9 "9 slack"
 
+bindsym $mod+space workspace number $ws0
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
@@ -84,6 +86,7 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 
+bindsym $mod+Shift+space move container to workspace number $ws0
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
@@ -93,7 +96,6 @@ bindsym $mod+Shift+6 move container to workspace number $ws6
 bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws0
 
 bindsym $mod+Shift+b border toggle
 
@@ -132,9 +134,6 @@ bindsym $mod+Home  exec toggle-sink.sh
 bindsym $mod+Prior exec volume.sh up
 bindsym $mod+Next exec volume.sh down
 
-bindsym $mod+Shift+space move scratchpad
-bindsym $mod+space scratchpad show
-
 bindsym $mod+Shift+Tab exec --no-startup-id rofi -theme ~/.onedark.rasi -show window
 bindsym $mod+Tab workspace back_and_forth
 
@@ -167,11 +166,11 @@ bar {
   }
 }
 
-assign [class="BrainDump"] $ws1
-assign [class="Firefox"] $ws2
-assign [class="Chromium"] $ws2
-assign [class="Google-chrome"] $ws2
-#assign [class="Slack"] $ws9
+assign [class="BrainDump"] $ws0
+assign [class="Firefox"] $ws1
+assign [class="Chromium"] $ws1
+assign [class="Google-chrome"] $ws1
+assign [class="Slack"] $ws9
 
 for_window [class=".*"] border pixel 0
 for_window [class=".*"] urgency disable
