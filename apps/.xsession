@@ -15,6 +15,7 @@ blueman-applet &
 ~/.dropbox-dist/dropboxd &
 xset s off -dpms	&
 gtk-redshift &
+unclutter -idle 0.01 -root &
 google-chrome &
 braindump &
 
