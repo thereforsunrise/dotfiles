@@ -51,3 +51,16 @@ dockernuke() {
     awk '{ print $1 }' | \
     xargs docker rm -f {}
 }
+
+updateme() {
+  (
+    cd "$CODEDIR/scripts"
+    git pull
+  )
+  (
+    cd "$CODEDIR/dotfiles"
+    git pull
+  )
+
+  "$CODEDIR/dotfiles/checkin.sh"
+}
