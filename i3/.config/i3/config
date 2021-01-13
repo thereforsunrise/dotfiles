@@ -10,8 +10,9 @@ bindsym $mod+c kill
 bindsym $mod+p exec run.sh
 bindsym $mod+Shift+r restart
 
-bindsym $mod+u exec set-wd-for-ws.sh
+bindsym $mod+n exec rename-workspace
 bindsym $mod+t exec pomo-dmenu
+bindsym $mod+u exec set-wd-for-ws.sh
 
 bindsym $mod+j focus left
 bindsym $mod+k focus down
