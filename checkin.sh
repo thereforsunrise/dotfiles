@@ -11,6 +11,11 @@ if [ ! -L "$HOME/Projects/dotfiles" ]; then
   ln -s "$HOME/.dotfiles/" "$HOME/Projects/dotfiles"
 fi
 
+prompt_sudo() {
+  # dummy command to get sudo session to we don't prompt later on
+  sudo hostname &>/dev/null
+}
+
 setup_secret() {
   if [ ! -f "$HOME/.secret" ]; then
     echo "Copying example secrets file. "
@@ -31,11 +36,13 @@ checkout_scripts() {
   fi
 }
 
-install_stow() {
-  if ! dpkg -l | grep stow &>/dev/null; then
-    echo "Installing stow..."
-    sudo apt install -y stow
-  fi
+install_packages() {
+  sudo apt-get update
+  
+  cat "$SCRIPTPATH/packages" "packages.$(hostname -s | tr '[A-Z]' '[a-z]')" \
+    2>/dev/null | \
+    sort | uniq | \
+    xargs sudo apt-get install -y &>/dev/null
 }
 
 install_antigen() {
@@ -106,9 +113,10 @@ EOF
 
 echo -e "Checking into $HOSTNAME...\n"
 
+prompt_sudo
 setup_secret
 checkout_scripts
-install_stow
+install_packages
 install_antigen
 run_stow
 change_shell
