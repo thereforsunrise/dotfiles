@@ -17,6 +17,9 @@ alias mailr='msmtp-runqueue.sh'
 [[ -e "$HOME/.secret" ]] && \
   source "$HOME/.secret"
 
+[[ -e "$HOME/.secret_work" ]] && \
+  source "$HOME/.secret_work"
+
 [[ -e "$HOME/.zsh/$(uname | tr '[A-Z]' '[a-z]')" ]] && \
   source "$HOME/.zsh/$(uname | tr '[A-Z]' '[a-z]')"
 
