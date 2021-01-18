@@ -16,23 +16,3 @@ update() {
   sudo apt-get update
   sudo apt-get dist-upgrade
 }
-
-agi() {
-  local packages_file="$HOME/.dotfiles/packages"
-  local sorted_packages_file=$(mktemp)
-
-  for p in "$@"; do
-    if ! apt-cache show "$p"; then
-      echo "$p doesn't seem to exist? You might want to fix this and run again."
-      return 1
-    fi
-  done
-
-  for p in "$@"; do
-    if sudo apt-get install "$p"; then
-      echo "$p" >> "$packages_file"
-      cat "$packages_file" | sort | uniq > "$sorted_packages_file"
-      mv "$sorted_packages_file" "$packages_file"
-    fi
-  done
-}
