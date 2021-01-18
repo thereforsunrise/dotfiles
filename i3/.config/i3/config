@@ -73,7 +73,7 @@ set $ws3 3
 set $ws4 4
 set $ws5 5
 set $ws6 6
-set $ws7 7
+set $ws7 "7 spotify"
 set $ws8 "8 steam"
 set $ws9 "9 slack"
 
@@ -150,7 +150,8 @@ bar {
   status_command i3blocks
   position bottom
 
-  tray_output primary
+  #tray_output primary
+  tray_output none
 
   workspace_buttons yes
 
@@ -174,6 +175,7 @@ assign [class="Chromium"] $ws1
 assign [class="Google-chrome"] $ws1
 assign [class="Steam"] $ws8
 assign [class="Slack"] $ws9
+assign [class="Spotify"] $ws7
 
 for_window [class=".*"] border pixel 0
 for_window [class=".*"] urgency disable
