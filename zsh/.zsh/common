@@ -17,11 +17,11 @@ alias mailr='msmtp-runqueue.sh'
 [[ -e "$HOME/.secret" ]] && \
   source "$HOME/.secret"
 
-[[ -e "$HOME/.zsh/$(uname | tr '[A-Z]' '[a-z'])" ]] && \
-  source "$HOME/.zsh/$(uname | tr '[A-Z]' '[a-z'])"
+[[ -e "$HOME/.zsh/$(uname | tr '[A-Z]' '[a-z]')" ]] && \
+  source "$HOME/.zsh/$(uname | tr '[A-Z]' '[a-z]')"
 
-[[ -e "$HOME/.zsh/$(hostname -s | tr '[A-Z]' '[a-z'])" ]] && \
-  source "$HOME/.zsh/$(hostname -s | tr '[A-Z]' '[a-z'])"
+[[ -e "$HOME/.zsh/$(hostname -s | tr '[A-Z]' '[a-z]')" ]] && \
+  source "$HOME/.zsh/$(hostname -s | tr '[A-Z]' '[a-z]')"
 
 source "$CODEDIR/antigen.zsh"
 
