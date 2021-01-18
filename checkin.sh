@@ -4,7 +4,7 @@
 # according to stack overflow :-(
 SCRIPTPATH="$(cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P)"
 
-mkdir -p "$HOME/Projects"
+mkdir -p "$HOME/Projects/work"
 mkdir -p "$HOME/.msmtpqueue"
 
 if [ ! -L "$HOME/Projects/dotfiles" ]; then

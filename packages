@@ -9,11 +9,14 @@ i3blocks
 i3lock
 i3wm
 jq
+msmtp
 p7zip
 rofi
+screen
 software-properties-common
 stow
 tig
+tmux
 unattended-upgrades
 unzip
 vim-nox
