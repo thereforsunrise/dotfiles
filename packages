@@ -3,10 +3,13 @@ apt-transport-https
 bsd-mailx
 ca-certificates
 curl
+evince
 gnupg-agent
 i3blocks
+i3lock
 i3wm
 jq
+p7zip
 rofi
 software-properties-common
 stow

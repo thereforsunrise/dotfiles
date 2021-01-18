@@ -36,6 +36,10 @@ checkout_scripts() {
   fi
 }
 
+is_package_installed() {
+  dpkg -l | grep "$1" &>/dev/null
+}
+
 install_packages() {
   sudo apt-get update
 
@@ -45,10 +49,43 @@ install_packages() {
     xargs sudo apt-get install -y &>/dev/null
 }
 
+install_google_chrome() {
+  is_package_installed "google-chrome" && return 0
+
+  (
+    cd /tmp
+    wget -O chrome.deb "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb" && \
+    sudo apt install ./chrome.deb && \
+    rm ./chrome.deb
+  )
+}
+
+install_atom() {
+  is_package_installed "atom" && return 0
+
+  (
+    cd /tmp
+    wget -O atom.deb "https://atom.io/download/deb" && \
+    sudo apt install ./atom.deb && \
+    rm ./atom.deb
+  )
+}
+
+install_spotify() {
+  is_package_installed "spotify-client" && return 0
+
+  curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | \
+    sudo apt-key add -
+
+  echo "deb http://repository.spotify.com stable non-free" | \
+    sudo tee /etc/apt/sources.list.d/spotify.list
+
+  sudo apt-get update && \
+    sudo apt-get install spotify-client
+}
+
 install_docker() {
-  if dpkg -l | grep docker-ce &>/dev/null; then
-    return 0
-  fi
+  is_package_installed "docker-ce" && return 0
 
   echo "Install Docker..."
 
@@ -66,6 +103,8 @@ install_docker() {
 
   sudo apt-get update
   sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+  sudo gpasswd -a "$USER" docker
 }
 
 install_antigen() {
@@ -74,6 +113,22 @@ install_antigen() {
     curl -L git.io/antigen > \
       ~/Projects/antigen.zsh
   fi
+}
+
+install_rbenv() {
+  local rbenv_path="$HOME/.rbenv"
+
+  [[ -d "$rbenv_path" ]] && return 0
+
+  git clone https://github.com/rbenv/rbenv.git "$rbenv_path"
+  mkdir -p "$rbenv_path"/plugins
+  git clone https://github.com/rbenv/ruby-build.git "$rbenv_path"/plugins/ruby-build
+}
+
+install_nvm() {
+  [[ -d "$HOME/.nvm" ]] && return 0
+
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 }
 
 run_stow() {
@@ -140,8 +195,13 @@ prompt_sudo
 setup_secret
 checkout_scripts
 install_packages
+install_google_chrome
+install_atom
+install_spotify
 install_docker
 install_antigen
+install_rbenv
+install_nvm
 run_stow
 change_shell
 generate_gitconfigs
