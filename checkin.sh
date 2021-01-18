@@ -38,11 +38,34 @@ checkout_scripts() {
 
 install_packages() {
   sudo apt-get update
-  
+
   cat "$SCRIPTPATH/packages" "packages.$(hostname -s | tr '[A-Z]' '[a-z]')" \
     2>/dev/null | \
     sort | uniq | \
     xargs sudo apt-get install -y &>/dev/null
+}
+
+install_docker() {
+  if dpkg -l | grep docker-ce &>/dev/null; then
+    return 0
+  fi
+
+  echo "Install Docker..."
+
+  # we install docker prereqs in install_packages
+
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
+    sudo apt-key add -
+
+  sudo apt-key fingerprint 0EBFCD88
+
+  sudo add-apt-repository \
+    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) \
+    stable"
+
+  sudo apt-get update
+  sudo apt-get install docker-ce docker-ce-cli containerd.io
 }
 
 install_antigen() {
@@ -117,6 +140,7 @@ prompt_sudo
 setup_secret
 checkout_scripts
 install_packages
+install_docker
 install_antigen
 run_stow
 change_shell
