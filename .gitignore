@@ -12,3 +12,4 @@ atom/.atom/compile-cache/
 atom/.atom/nohup.out
 atom/.atom/packages/
 atom/.atom/storage/
+atom/.atom/blob-store/
