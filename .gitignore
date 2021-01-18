@@ -5,3 +5,10 @@ secret
 password
 *.swp
 wd_*
+atom/.atom/.apm/
+atom/.atom/.atom-socket-secret-jg-1.54.0
+atom/.atom/.node-gyp/
+atom/.atom/compile-cache/
+atom/.atom/nohup.out
+atom/.atom/packages/
+atom/.atom/storage/
