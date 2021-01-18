@@ -9,3 +9,12 @@ I have two computers:
 
 These scripts help me keep them in sync as well as serving as a general record
 of changes etc
+
+## How to use
+
+When first setting up a machine, simply run:
+
+```
+git clone git@github.com:zaargy/dotfiles.git ~/.dotfiles
+~/.dotfiles/checkin.sh
+```
