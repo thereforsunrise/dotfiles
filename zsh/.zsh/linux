@@ -11,8 +11,3 @@ eval "$(rbenv init -)"
 export NVM_DIR="$HOME/.nvm"
 
 source "$NVM_DIR/nvm.sh"
-
-update() {
-  sudo apt-get update
-  sudo apt-get dist-upgrade
-}
