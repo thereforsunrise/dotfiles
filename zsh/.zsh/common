@@ -1,7 +1,7 @@
 export CODEDIR="$HOME/Projects"
 export DRACULA_DISPLAY_CONTEXT=1
 export PAGER="/usr/bin/less"
-export PATH="$HOME/bin:$CODEDIR/scripts:/sbin:$PATH"
+export PATH="$HOME/bin:$CODEDIR/zaargy/scripts:/sbin:$PATH"
 export VISUAL="/usr/bin/vim"
 
 alias be='bundle exec'
