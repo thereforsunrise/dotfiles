@@ -36,5 +36,6 @@ unattended-upgrades
 unzip
 vim-nox
 vlc
+winetricks
 xclip
 zsh
