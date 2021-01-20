@@ -131,6 +131,15 @@ install_nvm() {
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 }
 
+install_youtubedl() {
+  [[ -f "/usr/local/bin/youtube-dl" ]] && return 0
+
+  sudo curl \
+          -L https://yt-dl.org/downloads/latest/youtube-dl \
+          -o /usr/local/bin/youtube-dl
+  sudo chmod a+rx /usr/local/bin/youtube-dl
+}
+
 run_stow() {
   find "$SCRIPTPATH" \
     -maxdepth 1 \
@@ -202,6 +211,7 @@ install_docker
 install_antigen
 install_rbenv
 install_nvm
+install_youtubedl
 run_stow
 change_shell
 generate_gitconfigs
