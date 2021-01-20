@@ -36,7 +36,6 @@ direnv
 docker
 docker-compose
 gem
-git
 heroku
 lein
 pip
