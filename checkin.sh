@@ -85,7 +85,7 @@ install_spotify() {
 }
 
 install_slack() {
-  is_package_installed "slack" && return 0
+  is_package_installed "slack-desktop" && return 0
 
   (
     cd /tmp
@@ -94,6 +94,18 @@ install_slack() {
     rm ./slack.deb
   )
 }
+
+install_discord() {
+  is_package_installed "discord" && return 0
+
+  (
+    cd /tmp
+    wget -O discord.deb "https://dl.discordapp.net/apps/linux/0.0.13/discord-0.0.13.deb" && \
+    sudo apt install ./discord.deb && \
+    rm ./discord
+  )
+}
+
 install_docker() {
   is_package_installed "docker-ce" && return 0
 
@@ -218,6 +230,7 @@ install_google_chrome
 install_atom
 install_spotify
 install_slack
+install_discord
 install_docker
 install_antigen
 install_rbenv

@@ -27,6 +27,7 @@ rofi
 screen
 scrot
 software-properties-common
+spell
 stow
 streamer
 testdisk
@@ -36,6 +37,7 @@ unattended-upgrades
 unzip
 vim-nox
 vlc
+wbritish
 winetricks
 xclip
 zsh
