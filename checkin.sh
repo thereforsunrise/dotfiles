@@ -84,6 +84,16 @@ install_spotify() {
     sudo apt-get install spotify-client
 }
 
+install_slack() {
+  is_package_installed "slack" && return 0
+
+  (
+    cd /tmp
+    wget -O slack.deb "https://downloads.slack-edge.com/linux_releases/slack-desktop-4.12.2-amd64.deb" && \
+    sudo apt install ./slack.deb && \
+    rm ./slack.deb
+  )
+}
 install_docker() {
   is_package_installed "docker-ce" && return 0
 
@@ -207,6 +217,7 @@ install_packages
 install_google_chrome
 install_atom
 install_spotify
+install_slack
 install_docker
 install_antigen
 install_rbenv
