@@ -40,6 +40,20 @@ is_package_installed() {
   dpkg -l | grep "$1" &>/dev/null
 }
 
+install_package_from_http_if_not_installed() {
+  local package_name="$1"
+  local url="$2"
+
+  is_package_installed "$package_name" && return 0
+
+  (
+    cd /tmp
+    wget -O "$package_name.deb" "$url" && \
+    sudo apt install "./$package_name.deb" && \
+    rm "./$package_name.deb"
+  )
+}
+
 install_packages() {
   sudo apt-get update
 
@@ -50,25 +64,15 @@ install_packages() {
 }
 
 install_google_chrome() {
-  is_package_installed "google-chrome" && return 0
-
-  (
-    cd /tmp
-    wget -O chrome.deb "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb" && \
-    sudo apt install ./chrome.deb && \
-    rm ./chrome.deb
-  )
+  install_package_from_http_if_not_installed \
+    "google-chrome" \
+    "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 }
 
 install_atom() {
-  is_package_installed "atom" && return 0
-
-  (
-    cd /tmp
-    wget -O atom.deb "https://atom.io/download/deb" && \
-    sudo apt install ./atom.deb && \
-    rm ./atom.deb
-  )
+  install_package_from_http_if_not_installed \
+    "atom" \
+    "https://atom.io/download/deb"
 }
 
 install_spotify() {
@@ -85,25 +89,15 @@ install_spotify() {
 }
 
 install_slack() {
-  is_package_installed "slack-desktop" && return 0
-
-  (
-    cd /tmp
-    wget -O slack.deb "https://downloads.slack-edge.com/linux_releases/slack-desktop-4.12.2-amd64.deb" && \
-    sudo apt install ./slack.deb && \
-    rm ./slack.deb
-  )
+  install_package_from_http_if_not_installed \
+    "slack-desktop" \
+    "https://downloads.slack-edge.com/linux_releases/slack-desktop-4.12.2-amd64.deb"
 }
 
 install_discord() {
-  is_package_installed "discord" && return 0
-
-  (
-    cd /tmp
-    wget -O discord.deb "https://dl.discordapp.net/apps/linux/0.0.13/discord-0.0.13.deb" && \
-    sudo apt install ./discord.deb && \
-    rm ./discord
-  )
+  install_package_from_http_if_not_installed \
+    "discord" \
+    "https://dl.discordapp.net/apps/linux/0.0.13/discord-0.0.13.deb"
 }
 
 install_docker() {
