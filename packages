@@ -5,6 +5,7 @@ bsd-mailx
 build-essential
 ca-certificates
 curl
+direnv
 evince
 ffmpeg
 gnupg
