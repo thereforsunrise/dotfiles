@@ -7,8 +7,8 @@ SCRIPTPATH="$(cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P)"
 mkdir -p "$HOME/Projects/work"
 mkdir -p "$HOME/.msmtpqueue"
 
-if [ ! -L "$HOME/Projects/dotfiles" ]; then
-  ln -s "$HOME/.dotfiles/" "$HOME/Projects/dotfiles"
+if [ ! -L "$HOME/Projects/zaargy/dotfiles" ]; then
+  ln -s "$HOME/.dotfiles/" "$HOME/Projects/zaargy/dotfiles"
 fi
 
 prompt_sudo() {
