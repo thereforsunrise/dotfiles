@@ -46,6 +46,8 @@ install_package_from_http_if_not_installed() {
 
   is_package_installed "$package_name" && return 0
 
+  echo "Installing $package_name from $url..."
+
   (
     cd /tmp
     wget -O "$package_name.deb" "$url" && \
@@ -61,6 +63,12 @@ install_packages() {
     2>/dev/null | \
     sort | uniq | \
     xargs sudo apt-get install -y &>/dev/null
+}
+
+install_braindump() {
+  install_package_from_http_if_not_installed \
+    "braindump" \
+    "https://github.com/zaargy/braindump/releases/download/0.1/BrainDump_1.0.0_amd64.deb"
 }
 
 install_google_chrome() {
@@ -220,6 +228,7 @@ prompt_sudo
 setup_secret
 checkout_scripts
 install_packages
+install_braindump
 install_google_chrome
 install_atom
 install_spotify
