@@ -4,11 +4,15 @@
 # according to stack overflow :-(
 SCRIPTPATH="$(cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P)"
 
-mkdir -p "$HOME/Projects/work"
+mkdir -p "$HOME/Projects/$WORK_COMPANY_NAME"
 mkdir -p "$HOME/.msmtpqueue"
 
 if [ ! -L "$HOME/Projects/zaargy/dotfiles" ]; then
   ln -s "$HOME/.dotfiles/" "$HOME/Projects/zaargy/dotfiles"
+fi
+
+if [ ! -L "$HOME/Projects/work" ]; then
+  ln -s "$HOME/Projects/$WORK_COMPANY_NAME" "$HOME/Projects/work"
 fi
 
 prompt_sudo() {
