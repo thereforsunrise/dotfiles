@@ -1,8 +1,8 @@
-[includeIf "gitdir:~/Projects/work/"]
-  path = ~/.gitconfig_work
-
-[includeIf "gitdir:~/Projects/"]
+[includeIf "gitdir:~/Projects/**"]
   path = ~/.gitconfig_personal
+
+[includeIf "gitdir:~/Projects/work/**"]
+  path = ~/.gitconfig_work
 
 [color]
   diff = auto
