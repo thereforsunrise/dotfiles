@@ -225,6 +225,9 @@ EOF
     name = $GIT_NAME
     email = $GIT_PERSONAL_EMAIL
 EOF
+
+  # hack to stop atom modifying my gitconfig!
+  chmod 444 ~/.dotfiles/git/.gitconfig
 }
 
 generate_msmtprc() {
