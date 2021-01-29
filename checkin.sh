@@ -168,6 +168,20 @@ install_youtubedl() {
   sudo chmod a+rx /usr/local/bin/youtube-dl
 }
 
+install_awscli() {
+  [[ -f "/usr/local/bin/aws" ]] && return 0
+
+  curl \
+    -L "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" \
+    -o "/tmp/awscliv2.zip"
+
+  (
+    cd /tmp
+    unzip awscliv2.zip
+    sudo ./aws/install
+  )
+}
+
 run_stow() {
   find "$SCRIPTPATH" \
     -maxdepth 1 \
@@ -243,6 +257,7 @@ install_antigen
 install_rbenv
 install_nvm
 install_youtubedl
+install_awscli
 run_stow
 change_shell
 generate_gitconfigs
