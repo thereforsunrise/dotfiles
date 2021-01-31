@@ -249,7 +249,36 @@ tls_fingerprint "48:50:EB:01:67:E8:22:24:1A:B1:74:F4:B5:0A:98:16:F4:06:92:97:70:
 syslog LOG_MAIL
 account default : fastmail
 EOF
+}
 
+generate_vdirsyncer() {
+  source ~/.secret
+
+  mkdir -p "$HOME/.vdirsyncer"
+
+  cat <<EOF > "$HOME/.vdirsyncer/config"
+[general]
+ status_path = "~/.vdirsyncer/status/"
+
+[pair fastmail]
+ a = "khal"
+ b = "cal"
+ collections = ["from a", "from b"]
+
+[storage cal]
+ type = "caldav"
+ url = "https://caldav.messagingengine.com/"
+ username = "$MSMTP_EMAIL"
+ password = "$MSMTP_PASSWORD"
+ read_only = "true"
+
+[storage khal]
+ type = "filesystem"
+ path = "$HOME/.vdirsyncer/fastmail"
+ fileext = ".ics"
+ encoding = "utf-8"
+ post_hook = null
+EOF
 }
 
 echo -e "Checking into $HOSTNAME...\n"
@@ -275,3 +304,4 @@ run_stow
 change_shell
 generate_gitconfigs
 generate_msmtprc
+generate_vdirsyncer

@@ -1,11 +1,14 @@
 ack
 apt-listchanges
 apt-transport-https
+blueman
 bsd-mailx
 build-essential
 ca-certificates
 curl
 direnv
+emacs
+espeak
 evince
 ffmpeg
 gnupg
@@ -16,10 +19,13 @@ i3blocks
 i3lock
 i3wm
 jq
+khal
+lame
 libffi-dev
 libssl-dev
 msmtp
 p7zip
+pavucontrol
 pwgen
 python2
 python3
@@ -38,6 +44,7 @@ tig
 tmux
 unattended-upgrades
 unzip
+vdirsyncer
 vim-nox
 vlc
 wbritish
