@@ -1,6 +1,9 @@
 "*":
   core:
     autoHideMenuBar: true
+    disabledPackages: [
+      "github"
+    ]
     telemetryConsent: "no"
   editor:
     fontSize: 25
