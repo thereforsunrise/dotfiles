@@ -11,3 +11,8 @@ eval "$(rbenv init -)"
 export NVM_DIR="$HOME/.nvm"
 
 source "$NVM_DIR/nvm.sh"
+
+
+emacs() {
+  (/usr/bin/emacs &)
+}
