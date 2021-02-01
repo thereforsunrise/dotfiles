@@ -5,12 +5,16 @@ blueman
 bsd-mailx
 build-essential
 ca-certificates
+calcurse
 curl
 direnv
 emacs
 espeak
 evince
 ffmpeg
+fonts-hack
+fonts-inconsolata
+fonts-terminus
 gnupg
 gnupg-agent
 gvfs
@@ -42,6 +46,7 @@ streamer
 testdisk
 tig
 tmux
+tree
 unattended-upgrades
 unzip
 vdirsyncer
@@ -50,4 +55,5 @@ vlc
 wbritish
 winetricks
 xclip
+xfonts-terminus
 zsh

@@ -1,22 +1,14 @@
+[default]
+  default_calendar = fbd8f1fc-fb92-42be-851b-3aa339c5cc29
+
 [calendars]
-[[default]]
- path = ~/.vdirsyncer/fastmail/Default
- type = discover
-[[travel]]
- path = ~/.vdirsyncer/fastmail/folder_id_1
- type = discover
-[[events]]
- path = ~/.vdirsyncer/fastmail/folder_id_2
- type = discover
-[[admin]]
- path = ~/.vdirsyncer/fastmail/folder_id_3
- type = discover
-[[birthdays]]
- path = ~/.vdirsyncer/fastmail/folder_id_3
- type = discover
+  [[home]]
+    path = ~/.vdirsyncer/fastmail/fbd8f1fc-fb92-42be-851b-3aa339c5cc29
+    type = discover
+
 [locale]
- timeformat = %H:%M
- dateformat = %d/%m/%Y
- longdateformat = %d/%m/%Y
- datetimeformat = %d/%m/%Y %H:%M
- longdatetimeformat = %d/%m/%Y %H:%M
+  timeformat = %H:%M
+  dateformat = %d/%m/%Y
+  longdateformat = %d/%m/%Y
+  datetimeformat = %d/%m/%Y %H:%M
+  longdatetimeformat = %d/%m/%Y %H:%M
