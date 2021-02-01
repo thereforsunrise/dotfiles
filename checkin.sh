@@ -226,7 +226,7 @@ EOF
     email = $GIT_PERSONAL_EMAIL
 EOF
 
-  # hack to stop atom modifying my gitconfig!
+  # hack to stop pesky atom modifying my gitconfig!
   chmod 444 ~/.dotfiles/git/.gitconfig
 }
 
@@ -234,7 +234,7 @@ generate_msmtprc() {
   source ~/.secret
 
   cat <<EOF > "$HOME/.msmtprc"
-account fastmail
+account mail
 host mail.messagingengine.com
 from $MSMTP_EMAIL
 
@@ -244,10 +244,10 @@ password $MSMTP_PASSWORD
 
 tls on
 tls_starttls off
-tls_fingerprint "48:50:EB:01:67:E8:22:24:1A:B1:74:F4:B5:0A:98:16:F4:06:92:97:70:76:92:AF:B0:EE:0D:4D:89:6E:4A:09"
+tls_fingerprint "$MSMTP_TLS_FINGERPRINT"
 
 syslog LOG_MAIL
-account default : fastmail
+account default : mail
 EOF
 }
 
