@@ -129,9 +129,9 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym Pause mode "$mode_system"
+bindsym F9 mode "$mode_system"
 bindsym Print exec screenshot.sh
-bindsym $mod+Home  exec toggle-sink.sh
+bindsym F10  exec toggle-sink.sh
 
 bindsym $mod+Prior exec volume.sh up
 bindsym $mod+Next exec volume.sh down
@@ -150,8 +150,8 @@ bar {
   status_command i3blocks
   position bottom
 
-  tray_output primary
-  #tray_output none
+  #tray_output primary
+  tray_output none
 
   workspace_buttons yes
 
@@ -173,7 +173,7 @@ assign [class="BrainDump"] $ws0
 assign [class="Chromium"] $ws1
 assign [class="Firefox"] $ws1
 assign [class="Google-chrome"] $ws1
-assign [class="Kindle"] $ws6
+assign [class="Wine"] $ws6
 assign [class="Slack"] $ws9
 assign [class="Spotify"] $ws7
 assign [class="Steam"] $ws8
