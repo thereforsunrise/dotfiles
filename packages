@@ -1,6 +1,7 @@
 ack
 apt-listchanges
 apt-transport-https
+autokey-gtk
 blueman
 bsd-mailx
 build-essential
