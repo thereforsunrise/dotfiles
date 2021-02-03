@@ -41,7 +41,7 @@ checkout_scripts() {
 }
 
 is_package_installed() {
-  dpkg -l | grep "$1" &>/dev/null
+  dpkg -l | grep "\<${1}\>" &>/dev/null
 }
 
 install_package_from_http_if_not_installed() {
@@ -191,6 +191,12 @@ install_awscli() {
   )
 }
 
+install_gh() {
+  install_package_from_http_if_not_installed \
+    "gh" \
+    "https://github.com/cli/cli/releases/download/v1.5.0/gh_1.5.0_linux_amd64.deb"
+}
+
 run_stow() {
   find "$SCRIPTPATH" \
     -maxdepth 1 \
@@ -300,6 +306,8 @@ install_rbenv
 install_nvm
 install_youtubedl
 install_awscli
+install_tiddlydesktop
+install_gh
 run_stow
 change_shell
 generate_gitconfigs
