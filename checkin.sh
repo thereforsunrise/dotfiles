@@ -63,10 +63,8 @@ install_package_from_http_if_not_installed() {
 install_packages() {
   sudo apt-get update
 
-  cat "$SCRIPTPATH/packages" "packages.$(hostname -s | tr '[A-Z]' '[a-z]')" \
-    2>/dev/null | \
-    sort | uniq | \
-    xargs sudo apt-get install -y &>/dev/null
+  cat "$SCRIPTPATH/packages" "packages.$(hostname -s | tr '[A-Z]' '[a-z]')" | \
+    xargs sudo apt-get install -y
 }
 
 install_braindump() {
