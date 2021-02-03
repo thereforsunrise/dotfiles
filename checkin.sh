@@ -306,7 +306,6 @@ install_rbenv
 install_nvm
 install_youtubedl
 install_awscli
-install_tiddlydesktop
 install_gh
 run_stow
 change_shell
@@ -315,5 +314,10 @@ generate_msmtprc
 generate_vdirsyncer
 
 if [ ! -L "$HOME/.config/autokey/data/" ]; then
-  ln -s "$AUTOKEY_DATA" ~/.config/autokey/data
+  if [ -d  "$AUTOKEY_DATA" ]; then
+    rm -rf "$AUTOKEY_DATA"
+    ln -s "$AUTOKEY_DATA" "$HOME/.config/autokey/data"
+  else
+    echo "Note $AUTOKEY_DATA doesn't seem to exist?"
+  fi
 fi
