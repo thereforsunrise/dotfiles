@@ -14,3 +14,5 @@ atom/.atom/packages/
 atom/.atom/storage/
 atom/.atom/blob-store/
 vim/.vim/plugged/
+*~
+autokey/.config/autokey/data/

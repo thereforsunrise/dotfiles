@@ -313,3 +313,7 @@ change_shell
 generate_gitconfigs
 generate_msmtprc
 generate_vdirsyncer
+
+if [ ! -L "$HOME/.config/autokey/data/" ]; then
+  ln -s "$AUTOKEY_DATA" ~/.config/autokey/data
+fi
