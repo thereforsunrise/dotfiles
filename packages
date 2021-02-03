@@ -8,6 +8,7 @@ build-essential
 ca-certificates
 calcurse
 curl
+dialog
 direnv
 emacs
 espeak
