@@ -1,0 +1,21 @@
+[general]
+ status_path = "~/.vdirsyncer/status/"
+
+[pair fastmail]
+ a = "khal"
+ b = "cal"
+ collections = ["from a", "from b"]
+
+[storage cal]
+ type = "caldav"
+ url = "https://caldav.messagingengine.com/"
+ username = "$MSMTP_EMAIL"
+ password = "$MSMTP_PASSWORD"
+ read_only = "true"
+
+[storage khal]
+ type = "filesystem"
+ path = "$HOME/.vdirsyncer/fastmail"
+ fileext = ".ics"
+ encoding = "utf-8"
+ post_hook = null

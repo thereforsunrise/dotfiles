@@ -1,0 +1,14 @@
+account mail
+host mail.messagingengine.com
+from $MSMTP_EMAIL
+
+auth on
+user $MSMTP_EMAIL
+password $MSMTP_PASSWORD
+
+tls on
+tls_starttls off
+tls_fingerprint "$MSMTP_TLS_FINGERPRINT"
+
+syslog LOG_MAIL
+account default : mail

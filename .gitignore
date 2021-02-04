@@ -16,3 +16,7 @@ atom/.atom/blob-store/
 vim/.vim/plugged/
 *~
 autokey/.config/autokey/data
+/vdirsyncer/.vdirsyncer/config
+/apps/.msmtprc
+/apps/.gitconfig_personal
+/apps/.gitconfig_work

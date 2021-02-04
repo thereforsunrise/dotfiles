@@ -15,6 +15,10 @@ if [ ! -L "$HOME/Projects/work" ]; then
   ln -s "$HOME/Projects/$WORK_COMPANY_NAME" "$HOME/Projects/work"
 fi
 
+log() {
+  echo -e "[$(date --iso-8601=minutes)] \t ${1}"
+}
+
 prompt_sudo() {
   # dummy command to get sudo session to we don't prompt later on
   sudo hostname &>/dev/null
@@ -22,8 +26,8 @@ prompt_sudo() {
 
 setup_secret() {
   if [ ! -f "$HOME/.secret" ]; then
-    echo "Copying example secrets file. "
-    echo "You should fill this in before running this script again."
+    log "Copying example secrets file. "
+    log "You should fill this in before running this script again."
     cp "$SCRIPTPATH/secret.example" "$HOME/.secret"
     exit 1
   fi
@@ -35,7 +39,7 @@ checkout_scripts() {
   else
     (
       cd ~/Projects/scripts
-      git pull
+      git pull 1>/dev/null
     )
   fi
 }
@@ -50,7 +54,7 @@ install_package_from_http_if_not_installed() {
 
   is_package_installed "$package_name" && return 0
 
-  echo "Installing $package_name from $url..."
+  log "Installing $package_name from $url..."
 
   (
     cd /tmp
@@ -61,10 +65,11 @@ install_package_from_http_if_not_installed() {
 }
 
 install_packages() {
-  sudo apt-get update
+  log "Updating apt cache.."
+  sudo apt-get update 1>/dev/null
 
-  cat "$SCRIPTPATH/packages" "packages.$(hostname -s | tr '[A-Z]' '[a-z]')" | \
-    xargs sudo apt-get install -y
+  cat "$SCRIPTPATH/packages" "packages.$(hostname -s | tr '[A-Z]' '[a-z]')" 2>/dev/null | \
+    xargs sudo apt-get install -y 1>/dev/null
 }
 
 install_braindump() {
@@ -113,10 +118,9 @@ install_discord() {
 install_docker() {
   is_package_installed "docker-ce" && return 0
 
-  echo "Install Docker..."
+  log "Install Docker..."
 
   # we install docker prereqs in install_packages
-
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
     sudo apt-key add -
 
@@ -144,7 +148,7 @@ install_docker_compose() {
 
 install_antigen() {
   if [ ! -f ~/Projects/antigen.zsh ]; then
-    echo "Installing antigen..."
+    log "Installing antigen..."
     curl -L git.io/antigen > \
       ~/Projects/antigen.zsh
   fi
@@ -195,6 +199,22 @@ install_gh() {
     "https://github.com/cli/cli/releases/download/v1.5.0/gh_1.5.0_linux_amd64.deb"
 }
 
+expand_templates() {
+  find "$SCRIPTPATH" \
+    -type f \
+    -name "*.esub" | \
+  while read template; do
+    log "Expanding template $template..."
+
+    real_config="${template%.*}"
+
+    envsubst < "$template" > "$real_config"
+    if ! grep $(echo $real_config | sed "s#$SCRIPTPATH##") "$SCRIPTPATH/.gitignore" &>/dev/null; then
+      echo $(echo $real_config | sed "s#$SCRIPTPATH##") >> "$SCRIPTPATH/.gitignore"
+    fi
+  done
+}
+
 run_stow() {
   find "$SCRIPTPATH" \
     -maxdepth 1 \
@@ -203,89 +223,24 @@ run_stow() {
     -name ".*" \
     -exec basename {} \; | sort | \
   while read stow_package; do
-    echo "Stowing $stow_package..."
+    log "Stowing $stow_package..."
     stow --adopt "$stow_package"
   done
 }
 
 change_shell() {
   if [[ "$SHELL" != "/bin/zsh" ]]; then
-    echo "Changing shell to zsh"
+    log "Changing shell to zsh"
     chsh -s /bin/zsh
   fi
 }
 
-generate_gitconfigs() {
-  source ~/.secret
-
-  cat <<EOF > "$HOME/.gitconfig_work"
-[user]
-    name = $GIT_NAME
-    email = $GIT_WORK_EMAIL
-EOF
-
-  cat <<EOF > "$HOME/.gitconfig_personal"
-[user]
-    name = $GIT_NAME
-    email = $GIT_PERSONAL_EMAIL
-EOF
-
+make_git_config_readonly() {
   # hack to stop pesky atom modifying my gitconfig!
   chmod 444 ~/.dotfiles/git/.gitconfig
 }
 
-generate_msmtprc() {
-  source ~/.secret
-
-  cat <<EOF > "$HOME/.msmtprc"
-account mail
-host mail.messagingengine.com
-from $MSMTP_EMAIL
-
-auth on
-user $MSMTP_EMAIL
-password $MSMTP_PASSWORD
-
-tls on
-tls_starttls off
-tls_fingerprint "$MSMTP_TLS_FINGERPRINT"
-
-syslog LOG_MAIL
-account default : mail
-EOF
-}
-
-generate_vdirsyncer() {
-  source ~/.secret
-
-  mkdir -p "$HOME/.vdirsyncer"
-
-  cat <<EOF > "$HOME/.vdirsyncer/config"
-[general]
- status_path = "~/.vdirsyncer/status/"
-
-[pair fastmail]
- a = "khal"
- b = "cal"
- collections = ["from a", "from b"]
-
-[storage cal]
- type = "caldav"
- url = "https://caldav.messagingengine.com/"
- username = "$MSMTP_EMAIL"
- password = "$MSMTP_PASSWORD"
- read_only = "true"
-
-[storage khal]
- type = "filesystem"
- path = "$HOME/.vdirsyncer/fastmail"
- fileext = ".ics"
- encoding = "utf-8"
- post_hook = null
-EOF
-}
-
-echo -e "Checking into $HOSTNAME...\n"
+log "Checking into $HOSTNAME..."
 
 prompt_sudo
 setup_secret
@@ -305,17 +260,14 @@ install_nvm
 install_youtubedl
 install_awscli
 install_gh
+expand_templates
 run_stow
+make_git_config_readonly
 change_shell
-generate_gitconfigs
-generate_msmtprc
-generate_vdirsyncer
 
 if [ ! -L "$HOME/.config/autokey/data/" ]; then
   if [ -d  "$AUTOKEY_DATA" ]; then
     rm -rf "$AUTOKEY_DATA"
     ln -s "$AUTOKEY_DATA" "$HOME/.config/autokey/data"
-  else
-    echo "Note $AUTOKEY_DATA doesn't seem to exist?"
   fi
 fi
