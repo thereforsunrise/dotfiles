@@ -145,6 +145,14 @@ install_docker_compose() {
   sudo chmod +x /usr/local/bin/docker-compose
 }
 
+install_espanso() {
+  install_package_from_http_if_not_installed \
+    "espanso" \
+    "https://github.com/federico-terzi/espanso/releases/latest/download/espanso-debian-amd64.deb"
+    
+  espanso start
+}
+
 install_gh() {
   install_package_from_http_if_not_installed \
     "gh" \
@@ -215,6 +223,7 @@ install_packages() {
   install_discord
   install_docker
   install_docker_compose
+  install_espanso
   install_gh
   install_google_chrome
   install_nvm
