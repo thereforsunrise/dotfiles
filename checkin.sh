@@ -66,24 +66,12 @@ install_package_from_http_if_not_installed() {
   )
 }
 
-install_packages() {
-  log "Updating apt cache.."
-  sudo apt-get update 1>/dev/null
-
-  cat "$SCRIPTPATH/packages" "packages.$(hostname -s | tr '[A-Z]' '[a-z]')" 2>/dev/null | \
-    xargs sudo apt-get install -y 1>/dev/null
-}
-
-install_braindump() {
-  install_package_from_http_if_not_installed \
-    "braindump" \
-    "https://github.com/zaargy/braindump/releases/download/0.1/BrainDump_1.0.0_amd64.deb"
-}
-
-install_google_chrome() {
-  install_package_from_http_if_not_installed \
-    "google-chrome" \
-    "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+install_antigen() {
+  if [ ! -f ~/Projects/antigen.zsh ]; then
+    log "Installing antigen..."
+    curl -L git.io/antigen > \
+      ~/Projects/antigen.zsh
+  fi
 }
 
 install_atom() {
@@ -92,23 +80,24 @@ install_atom() {
     "https://atom.io/download/deb"
 }
 
-install_spotify() {
-  is_package_installed "spotify-client" && return 0
+install_awscli() {
+  [[ -f "/usr/local/bin/aws" ]] && return 0
 
-  curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | \
-    sudo apt-key add -
+  curl \
+    -L "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" \
+    -o "/tmp/awscliv2.zip"
 
-  echo "deb http://repository.spotify.com stable non-free" | \
-    sudo tee /etc/apt/sources.list.d/spotify.list
-
-  sudo apt-get update && \
-    sudo apt-get install spotify-client
+  (
+    cd /tmp
+    unzip awscliv2.zip
+    sudo ./aws/install
+  )
 }
 
-install_slack() {
+install_braindump() {
   install_package_from_http_if_not_installed \
-    "slack-desktop" \
-    "https://downloads.slack-edge.com/linux_releases/slack-desktop-4.12.2-amd64.deb"
+    "braindump" \
+    "https://github.com/zaargy/braindump/releases/download/0.1/BrainDump_1.0.0_amd64.deb"
 }
 
 install_discord() {
@@ -148,12 +137,22 @@ install_docker_compose() {
   sudo chmod +x /usr/local/bin/docker-compose
 }
 
-install_antigen() {
-  if [ ! -f ~/Projects/antigen.zsh ]; then
-    log "Installing antigen..."
-    curl -L git.io/antigen > \
-      ~/Projects/antigen.zsh
-  fi
+install_gh() {
+  install_package_from_http_if_not_installed \
+    "gh" \
+    "https://github.com/cli/cli/releases/download/v1.5.0/gh_1.5.0_linux_amd64.deb"
+}
+
+install_google_chrome() {
+  install_package_from_http_if_not_installed \
+    "google-chrome" \
+    "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+}
+
+install_nvm() {
+  [[ -d "$HOME/.nvm" ]] && return 0
+
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 }
 
 install_rbenv() {
@@ -166,10 +165,23 @@ install_rbenv() {
   git clone https://github.com/rbenv/ruby-build.git "$rbenv_path"/plugins/ruby-build
 }
 
-install_nvm() {
-  [[ -d "$HOME/.nvm" ]] && return 0
+install_slack() {
+  install_package_from_http_if_not_installed \
+    "slack-desktop" \
+    "https://downloads.slack-edge.com/linux_releases/slack-desktop-4.12.2-amd64.deb"
+}
 
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+install_spotify() {
+  is_package_installed "spotify-client" && return 0
+
+  curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | \
+    sudo apt-key add -
+
+  echo "deb http://repository.spotify.com stable non-free" | \
+    sudo tee /etc/apt/sources.list.d/spotify.list
+
+  sudo apt-get update && \
+    sudo apt-get install spotify-client
 }
 
 install_youtubedl() {
@@ -181,24 +193,27 @@ install_youtubedl() {
   sudo chmod a+rx /usr/local/bin/youtube-dl
 }
 
-install_awscli() {
-  [[ -f "/usr/local/bin/aws" ]] && return 0
+install_packages() {
+  log "Updating apt cache.."
+  sudo apt-get update 1>/dev/null
 
-  curl \
-    -L "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" \
-    -o "/tmp/awscliv2.zip"
+  cat "$SCRIPTPATH/packages" "packages.$(hostname -s | tr '[A-Z]' '[a-z]')" 2>/dev/null | \
+    xargs sudo apt-get install -y 1>/dev/null
 
-  (
-    cd /tmp
-    unzip awscliv2.zip
-    sudo ./aws/install
-  )
-}
-
-install_gh() {
-  install_package_from_http_if_not_installed \
-    "gh" \
-    "https://github.com/cli/cli/releases/download/v1.5.0/gh_1.5.0_linux_amd64.deb"
+  install_antigen
+  install_atom
+  install_awscli
+  install_braindump
+  install_discord
+  install_docker
+  install_docker_compose
+  install_gh
+  install_google_chrome
+  install_nvm
+  install_rbenv
+  install_slack
+  install_spotify
+  install_youtubedl
 }
 
 expand_templates() {
@@ -249,20 +264,6 @@ prompt_sudo
 setup_secret
 checkout_scripts
 install_packages
-install_braindump
-install_google_chrome
-install_atom
-install_spotify
-install_slack
-install_discord
-install_docker
-install_docker_compose
-install_antigen
-install_rbenv
-install_nvm
-install_youtubedl
-install_awscli
-install_gh
 expand_templates
 run_stow
 make_git_config_readonly
