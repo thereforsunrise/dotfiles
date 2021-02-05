@@ -67,8 +67,8 @@ bindsym $mod+minus focus mode_toggle
 bindsym $mod+a focus parent
 
 set $ws0 "0 braindump"
-set $ws1 "1 www"
-set $ws2 2
+set $ws1 "1 roam"
+set $ws2 "2 www"
 set $ws3 3
 set $ws4 4
 set $ws5 5
@@ -170,9 +170,9 @@ bar {
 }
 
 assign [class="BrainDump"] $ws0
-assign [class="Chromium"] $ws1
-assign [class="Firefox"] $ws1
-assign [class="Google-chrome"] $ws1
+assign [class="Chromium"] $ws2
+assign [class="Firefox"] $ws2
+assign [class="Google-chrome"] $ws2
 assign [class="Wine"] $ws6
 assign [class="Slack"] $ws9
 assign [class="Spotify"] $ws7
