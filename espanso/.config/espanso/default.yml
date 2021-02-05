@@ -11,6 +11,9 @@ matches:
   - trigger: ":espanso"
     replace: "Hi there!"
 
+  - trigger: ":ap"
+    replace: "[[Ashtanga Practice]]"
+
   # Dates
   - trigger: ":date"
     replace: "{{mydate}}"
