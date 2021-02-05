@@ -167,7 +167,8 @@ install_espanso() {
     "espanso" \
     "https://github.com/federico-terzi/espanso/releases/latest/download/espanso-debian-amd64.deb"
 
-  espanso start
+  [[ $(systemctl --user is-enabled espanso) != "enabled" ]] && \
+    espanso start
 }
 
 install_gh() {
@@ -186,6 +187,8 @@ install_nvm() {
   [[ -d "$HOME/.nvm" ]] && return 0
 
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+
+  nvm install node
 }
 
 install_rbenv() {
@@ -218,7 +221,7 @@ install_spotify() {
 }
 
 install_roam() {
-  [[ -f "/opt/roam/roam" ]] && return 0
+  [[ -f "/opt/roam/Roam" ]] && return 0
 
   if ! npm list -g | grep nativefier; then
     npm install -g nativefier
@@ -232,7 +235,6 @@ install_roam() {
 
   # https://github.com/nativefier/nativefier/issues/851 update WM_CLASS
   t=$(mktemp)
-
   jq '.name="roam"' /opt/roam/resources/app/package.json  > "$t"
   sudo mv "$t" /opt/roam/resources/app/package.json
 }
