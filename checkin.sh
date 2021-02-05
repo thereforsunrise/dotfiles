@@ -95,7 +95,7 @@ install_aws_rotate_key() {
   curl \
     -L "https://github.com/stefansundin/aws-rotate-key/releases/download/v1.0.7/aws-rotate-key-1.0.7-linux_amd64.zip" \
     -o "/tmp/aws-rotate-key-1.0.7-linux_amd64.zip"
-
+9
   (
     cd /tmp/
     unzip "aws-rotate-key-1.0.7-linux_amd64.zip"
@@ -217,6 +217,22 @@ install_spotify() {
     sudo apt-get install spotify-client
 }
 
+install_roam() {
+  [[ -f "/opt/roam/roam" ]] && return 0
+
+  if ! npm list -g | grep nativefier; then
+    npm install -g nativefier
+  fi
+
+  (
+    cd /tmp
+    nativefier -n Roam --full-screen  "https://roamResearch.com"
+    sudo mv /tmp/Roam-linux-x64 /opt/roam/
+  )
+
+  ln -s /opt/roam/Roam /opt/roam/roam
+}
+
 install_youtubedl() {
   [[ -f "/usr/local/bin/youtube-dl" ]] && return 0
 
@@ -248,6 +264,7 @@ install_packages() {
   install_rbenv
   install_slack
   install_spotify
+  install_roam
   install_youtubedl
 }
 
