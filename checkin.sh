@@ -95,7 +95,7 @@ install_aws_rotate_key() {
   curl \
     -L "https://github.com/stefansundin/aws-rotate-key/releases/download/v1.0.7/aws-rotate-key-1.0.7-linux_amd64.zip" \
     -o "/tmp/aws-rotate-key-1.0.7-linux_amd64.zip"
-9
+
   (
     cd /tmp/
     unzip "aws-rotate-key-1.0.7-linux_amd64.zip"
