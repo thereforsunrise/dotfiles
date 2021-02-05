@@ -88,6 +88,23 @@ install_atom() {
     "https://atom.io/download/deb"
 }
 
+
+install_aws_rotate_key() {
+  [[ -f "/usr/local/bin/aws-rotate-key" ]] && return 0
+
+  curl \
+    -L "https://github.com/stefansundin/aws-rotate-key/releases/download/v1.0.7/aws-rotate-key-1.0.7-linux_amd64.zip" \
+    -o "/tmp/aws-rotate-key-1.0.7-linux_amd64.zip"
+
+  (
+    cd /tmp/
+    unzip "aws-rotate-key-1.0.7-linux_amd64.zip"
+    sudo mv aws-rotate-key /usr/local/bin
+  )
+
+  sudo chmod +x /usr/local/bin/aws-rotate-key
+}
+
 install_awscli() {
   [[ -f "/usr/local/bin/aws" ]] && return 0
 
@@ -149,7 +166,7 @@ install_espanso() {
   install_package_from_http_if_not_installed \
     "espanso" \
     "https://github.com/federico-terzi/espanso/releases/latest/download/espanso-debian-amd64.deb"
-    
+
   espanso start
 }
 
@@ -218,6 +235,7 @@ install_packages() {
 
   install_antigen
   install_atom
+  install_aws_rotate_key
   install_awscli
   install_braindump
   install_discord
