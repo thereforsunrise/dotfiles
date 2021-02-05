@@ -230,7 +230,11 @@ install_roam() {
     sudo mv /tmp/Roam-linux-x64 /opt/roam/
   )
 
-  ln -s /opt/roam/Roam /opt/roam/roam
+  # https://github.com/nativefier/nativefier/issues/851 update WM_CLASS
+  t=$(mktemp)
+
+  jq '.name="roam"' /opt/roam/resources/app/package.json  > "$t"
+  sudo mv "$t" /opt/roam/resources/app/package.json
 }
 
 install_youtubedl() {
