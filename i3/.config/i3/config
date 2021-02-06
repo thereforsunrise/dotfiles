@@ -37,6 +37,7 @@ mode "$mode_apps" {
   bindsym k exec --no-startup-id wmctrl-cycle-by-name Kindle, mode "default"
   bindsym m exec --no-startup-id wmctrl-cycle-by-class Spotify, mode "default"
   bindsym s exec --no-startup-id wmctrl-cycle-by-class slack, mode "default"
+  bindsym r exec --no-startup-id wmctrl-cycle-by-class roam, mode "default"
   bindsym t exec --no-startup-id wmctrl-cycle-by-class gnome-terminal-server, mode "default"
   bindsym u exec --no-startup-id wmctrl-cycle-by-class rox-filer, mode "default"
 

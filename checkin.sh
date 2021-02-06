@@ -58,6 +58,10 @@ is_package_installed() {
   dpkg -l | grep "\<${1}\>" &>/dev/null
 }
 
+is_binary_installed() {
+  [[ -f "$1" ]]
+}
+
 install_package_from_http_if_not_installed() {
   local package_name="$1"
   local url="$2"
@@ -75,7 +79,7 @@ install_package_from_http_if_not_installed() {
 }
 
 install_antigen() {
-  if [ ! -f ~/Projects/antigen.zsh ]; then
+  if ! is_binary_installed "$HOME/Projects/antigen.zsh"; then
     log "Installing antigen..."
     curl -L git.io/antigen > \
       ~/Projects/antigen.zsh
@@ -90,7 +94,7 @@ install_atom() {
 
 
 install_aws_rotate_key() {
-  [[ -f "/usr/local/bin/aws-rotate-key" ]] && return 0
+  is_binary_installed "/usr/local/bin/aws-rotate-key" && return 0
 
   curl \
     -L "https://github.com/stefansundin/aws-rotate-key/releases/download/v1.0.7/aws-rotate-key-1.0.7-linux_amd64.zip" \
@@ -106,7 +110,7 @@ install_aws_rotate_key() {
 }
 
 install_awscli() {
-  [[ -f "/usr/local/bin/aws" ]] && return 0
+  is_binary_installed "/usr/local/bin/aws" && return 0
 
   curl \
     -L "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" \
@@ -154,11 +158,12 @@ install_docker() {
 }
 
 install_docker_compose() {
-  [[ -f "/usr/local/bin/docker-compose" ]] && return 0
+  is_binary_installed "/usr/local/bin/docker-compose" && return 0
 
   sudo curl \
         -L "https://github.com/docker/compose/releases/download/1.28.2/docker-compose-$(uname -s)-$(uname -m)" \
         -o /usr/local/bin/docker-compose
+
   sudo chmod +x /usr/local/bin/docker-compose
 }
 
@@ -221,7 +226,7 @@ install_spotify() {
 }
 
 install_roam() {
-  [[ -f "/opt/roam/Roam" ]] && return 0
+  is_binary_installed "/opt/roam/roam" && return 0
 
   if ! npm list -g | grep nativefier; then
     npm install -g nativefier
@@ -240,12 +245,13 @@ install_roam() {
 }
 
 install_youtubedl() {
-  [[ -f "/usr/local/bin/youtube-dl" ]] && return 0
+  is_binary_installed "/usr/local/bin/youtube-dl" && return 0
 
   sudo curl \
           -L https://yt-dl.org/downloads/latest/youtube-dl \
           -o /usr/local/bin/youtube-dl
-  sudo chmod a+rx /usr/local/bin/youtube-dl
+
+  sudo chmod +x /usr/local/bin/youtube-dl
 }
 
 install_packages() {
