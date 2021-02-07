@@ -188,6 +188,25 @@ install_google_chrome() {
     "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 }
 
+install_kindle() {
+  is_binary_installed "/opt/kindle/kindle" && return 0
+
+  if ! npm list -g | grep nativefier; then
+    npm install -g nativefier
+  fi
+
+  (
+    cd /tmp
+    nativefier -n kindle --full-screen  "https://https://read.amazon.com/"
+    sudo mv /tmp/kindle-linux-x64 /opt/kindle
+  )
+
+  # https://github.com/nativefier/nativefier/issues/851 update WM_CLASS
+  t=$(mktemp)
+  jq '.name="kindle"' /opt/kindle/resources/app/package.json  > "$t"
+  sudo mv "$t" /opt/kindle/resources/app/package.json
+}
+
 install_nvm() {
   [[ -d "$HOME/.nvm" ]] && return 0
 
@@ -234,8 +253,8 @@ install_roam() {
 
   (
     cd /tmp
-    nativefier -n Roam --full-screen  "https://roamResearch.com"
-    sudo mv /tmp/Roam-linux-x64 /opt/roam/
+    nativefier -n roam --full-screen  "https://roamResearch.com"
+    sudo mv /tmp/roam-linux-x64 /opt/roam/
   )
 
   # https://github.com/nativefier/nativefier/issues/851 update WM_CLASS
@@ -270,6 +289,7 @@ install_packages() {
   install_docker
   install_docker_compose
   install_espanso
+  install_kindle
   install_gh
   install_google_chrome
   install_nvm
