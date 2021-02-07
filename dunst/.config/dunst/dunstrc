@@ -299,6 +299,11 @@
     summary = "*Dropbox*"
     format = ""
 
+[ignore]
+    # This notification will not be displayed
+    summary = "*Highlight*"
+    format = ""
+
 #[history-ignore]
 #    # This notification will not be saved in history
 #    summary = "foobar"
