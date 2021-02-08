@@ -11,6 +11,9 @@ matches:
   - trigger: ":espanso"
     replace: "Hi there!"
 
+  - trigger: ":cs"
+    replace: "consciousness"
+
   - trigger: ":ap"
     replace: "[[Ashtanga Practice]]"
 
