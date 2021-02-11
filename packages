@@ -29,6 +29,7 @@ khal
 lame
 libffi-dev
 libssl-dev
+markdown
 msmtp
 p7zip
 pavucontrol
@@ -58,4 +59,5 @@ wbritish
 winetricks
 xclip
 xfonts-terminus
+xz-utils
 zsh

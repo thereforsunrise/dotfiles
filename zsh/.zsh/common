@@ -66,3 +66,5 @@ updateme() {
 
   "$CODEDIR/dotfiles/checkin.sh"
 }
+
+alias s='make shell'

@@ -294,14 +294,9 @@
 #    summary = "*script*"
 #    script = dunst_test.sh
 
-[ignore]
+[ignore-dropbox]
     # This notification will not be displayed
     summary = "*Dropbox*"
-    format = ""
-
-[ignore]
-    # This notification will not be displayed
-    summary = "*Highlight*"
     format = ""
 
 #[history-ignore]
