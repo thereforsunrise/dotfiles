@@ -245,7 +245,11 @@ install_spotify() {
 }
 
 install_roam() {
+<<<<<<< HEAD
   is_binary_installed "/opt/roam/roam" && return 0
+=======
+  [[ -f "/opt/roam/roam" ]] && return 0
+>>>>>>> fix roam package
 
   if ! npm list -g | grep nativefier; then
     npm install -g nativefier
