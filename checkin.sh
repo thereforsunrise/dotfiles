@@ -349,7 +349,7 @@ make_git_config_readonly() {
   chmod 444 ~/.dotfiles/git/.gitconfig
 }
 
-if [ ! -z "$1" ]; then
+if [[ ! -z "$1" ]]; then
   eval "$1"
   exit
 fi
