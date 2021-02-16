@@ -36,11 +36,8 @@ libgdbm-dev
 libncurses5-dev
 libreadline6-dev
 libssl-dev
-<<<<<<< HEAD
 markdown
-=======
 libyaml-dev
->>>>>>> add some packages
 msmtp
 p7zip
 pavucontrol

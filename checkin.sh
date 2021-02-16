@@ -245,11 +245,9 @@ install_spotify() {
 }
 
 install_roam() {
-<<<<<<< HEAD
   is_binary_installed "/opt/roam/roam" && return 0
-=======
+
   [[ -f "/opt/roam/roam" ]] && return 0
->>>>>>> fix roam package
 
   if ! npm list -g | grep nativefier; then
     npm install -g nativefier
@@ -335,7 +333,8 @@ run_stow() {
 
 install_crons() {
   log "Installing crons..."
-  (crontab -l ; echo "*/5 * * * * dyndyns.sh '$UPDATE_URL' '$UPDATE_SECRET' $(hostname -s)") | sort - | uniq - | crontab -
+  (crontab -l ; echo "*/5 * * * * dyndns.sh '$UPDATE_URL' '$UPDATE_SECRET' '$(hostname -s)'") | sort - | uniq - | crontab -
+  (crontab -l ; echo "*/5 * * * * dyndns.sh '$UPDATE_URL' '$UPDATE_SECRET' '$(hostname -s)-int' 'internal'") | sort - | uniq - | crontab -
 }
 
 change_shell() {
@@ -349,6 +348,11 @@ make_git_config_readonly() {
   # hack to stop pesky atom modifying my gitconfig!
   chmod 444 ~/.dotfiles/git/.gitconfig
 }
+
+if [ ! -z "$1" ]; then
+  eval "$1"
+  exit
+fi
 
 log "Checking into $HOSTNAME..."
 
