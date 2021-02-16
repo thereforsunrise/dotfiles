@@ -331,10 +331,16 @@ run_stow() {
   done
 }
 
+install_cron() {
+  local expression="$1"
+  local command="$2"
+  (crontab -l ; echo "$expression $command") | sort - | uniq - | crontab -
+}
+
 install_crons() {
   log "Installing crons..."
-  (crontab -l ; echo "*/5 * * * * dyndns.sh '$UPDATE_URL' '$UPDATE_SECRET' '$(hostname -s)'") | sort - | uniq - | crontab -
-  (crontab -l ; echo "*/5 * * * * dyndns.sh '$UPDATE_URL' '$UPDATE_SECRET' '$(hostname -s)-int' 'internal'") | sort - | uniq - | crontab -
+  install_cron "*/5 * * * *" "dyndns.sh '$UPDATE_URL' '$UPDATE_SECRET' '$(hostname -s)'"
+  install_cron "*/5 * * * *" "dyndns.sh '$UPDATE_URL' '$UPDATE_SECRET' '$(hostname -s)-int' 'internal'"
 }
 
 change_shell() {
