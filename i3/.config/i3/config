@@ -72,10 +72,10 @@ set $ws1 "1 roam"
 set $ws2 "2 www"
 set $ws3 3
 set $ws4 4
-set $ws5 5
+set $ws5 "5 steam"
 set $ws6 "6 kindle"
 set $ws7 "7 spotify"
-set $ws8 "8 steam"
+set $ws8 "8 discord"
 set $ws9 "9 slack"
 
 bindsym $mod+0 workspace number $ws0
@@ -171,15 +171,20 @@ bar {
 }
 
 assign [class="BrainDump"] $ws0
-assign [class="Roam"] $ws1
 assign [class="Chromium"] $ws2
 assign [class="Firefox"] $ws2
 assign [class="Google-chrome"] $ws2
-assign [class="Wine"] $ws6
 assign [class="Slack"] $ws9
 assign [class="Spotify"] $ws7
+<<<<<<< HEAD
 assign [class="Steam"] $ws8
 assign [class="read.amazon.co.uk"] $ws6
+=======
+assign [class="Steam"] $ws5
+assign [class="Wine"] $ws6
+assign [class="discord"] $ws8
+assign [class="roam"] $ws1
+>>>>>>> rearrange workspaces
 
 for_window [class=".*"] border pixel 0
 for_window [class=".*"] urgency disable
