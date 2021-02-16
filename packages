@@ -1,7 +1,9 @@
 ack
 apt-listchanges
 apt-transport-https
+autoconf
 autokey-gtk
+bison
 blueman
 bsd-mailx
 build-essential
@@ -27,9 +29,18 @@ i3-wm
 jq
 khal
 lame
+libdb-dev
 libffi-dev
+libgdbm6
+libgdbm-dev
+libncurses5-dev
+libreadline6-dev
 libssl-dev
+<<<<<<< HEAD
 markdown
+=======
+libyaml-dev
+>>>>>>> add some packages
 msmtp
 p7zip
 pavucontrol
@@ -60,4 +71,5 @@ winetricks
 xclip
 xfonts-terminus
 xz-utils
+zlib1g-dev
 zsh
