@@ -333,6 +333,11 @@ run_stow() {
   done
 }
 
+install_crons() {
+  log "Installing crons..."
+  (crontab -l ; echo "*/5 * * * * dyndyns.sh '$UPDATE_URL' '$UPDATE_SECRET' $(hostname -s)") | sort - | uniq - | crontab -
+}
+
 change_shell() {
   if [[ "$SHELL" != "/bin/zsh" ]]; then
     log "Changing shell to zsh"
@@ -354,5 +359,6 @@ checkout_scripts
 install_packages
 expand_templates
 run_stow
+install_crons
 make_git_config_readonly
 change_shell
