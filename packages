@@ -36,8 +36,8 @@ libgdbm-dev
 libncurses5-dev
 libreadline6-dev
 libssl-dev
-markdown
 libyaml-dev
+markdown
 msmtp
 p7zip
 pavucontrol
@@ -70,3 +70,4 @@ xfonts-terminus
 xz-utils
 zlib1g-dev
 zsh
+zsnes
