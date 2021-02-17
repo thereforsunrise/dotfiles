@@ -6,7 +6,7 @@
     ]
     telemetryConsent: "no"
   editor:
-    fontSize: 25
+    fontSize: 19
   "exception-reporting":
     userId: "b674d180-ee8a-4766-9d2c-640123c4c1cf"
   "linter-terraform-syntax":
