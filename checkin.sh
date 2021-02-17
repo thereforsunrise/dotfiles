@@ -220,6 +220,7 @@ install_lite() {
   is_binary_installed "/usr/local/bin/lite" && return 0
 
   curl \
+    -s \
     -L "https://github.com/rxi/lite/releases/download/v1.11/lite.zip" \
     -o "/tmp/lite.zip"
 
