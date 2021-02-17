@@ -68,3 +68,4 @@ updateme() {
 }
 
 alias s='make shell'
+alias open='xdg-open'
