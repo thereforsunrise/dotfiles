@@ -207,12 +207,29 @@ install_kindle() {
   sudo mv "$t" /opt/kindle/resources/app/package.json
 }
 
+
 install_nvm() {
   [[ -d "$HOME/.nvm" ]] && return 0
 
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 
   nvm install node
+}
+
+install_lite() {
+  is_binary_installed "/usr/local/bin/lite" && return 0
+
+  curl \
+    -L "https://github.com/rxi/lite/releases/download/v1.11/lite.zip" \
+    -o "/tmp/lite.zip"
+
+  (
+    cd /tmp
+    unzip lite.zip -d lite
+    sudo mv lite /opt
+  )
+
+  sudo ln -s /opt/lite/lite /usr/local/bin/lite
 }
 
 install_rbenv() {
@@ -294,6 +311,7 @@ install_packages() {
   install_kindle
   install_gh
   install_google_chrome
+  install_lite
   install_nvm
   install_rbenv
   install_slack
