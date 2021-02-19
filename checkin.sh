@@ -12,8 +12,8 @@ create_standard_dirs() {
   mkdir -p "$HOME/Projects/$WORK_COMPANY_NAME"
   mkdir -p "$HOME/.msmtpqueue"
 
-  if [ ! -L "$HOME/Projects/zaargy/dotfiles" ]; then
-    ln -s "$HOME/.dotfiles/" "$HOME/Projects/zaargy/dotfiles"
+  if [ ! -L "$HOME/Projects/thereforsunrise/dotfiles" ]; then
+    ln -s "$HOME/.dotfiles/" "$HOME/Projects/thereforsunrise/dotfiles"
   fi
 
   if [ ! -L "$HOME/Projects/work" ]; then
@@ -45,7 +45,7 @@ setup_secret() {
 
 checkout_scripts() {
   if [ ! -d ~/Projects/scripts ]; then
-    git clone git@github.com:zaargy/scripts.git ~/Projects/scripts
+    git clone git@github.com:thereforsunrise/scripts.git ~/Projects/scripts
   else
     (
       cd ~/Projects/scripts
@@ -126,7 +126,7 @@ install_awscli() {
 install_braindump() {
   install_package_from_http_if_not_installed \
     "braindump" \
-    "https://github.com/zaargy/braindump/releases/download/0.1/BrainDump_1.0.0_amd64.deb"
+    "https://github.com/thereforsunrise/braindump/releases/download/0.1/BrainDump_1.0.0_amd64.deb"
 }
 
 install_discord() {
