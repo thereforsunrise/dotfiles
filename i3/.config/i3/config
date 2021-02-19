@@ -176,15 +176,11 @@ assign [class="Firefox"] $ws2
 assign [class="Google-chrome"] $ws2
 assign [class="Slack"] $ws9
 assign [class="Spotify"] $ws7
-<<<<<<< HEAD
-assign [class="Steam"] $ws8
-assign [class="read.amazon.co.uk"] $ws6
-=======
 assign [class="Steam"] $ws5
 assign [class="Wine"] $ws6
 assign [class="discord"] $ws8
+assign [class="read.amazon.co.uk"] $ws6
 assign [class="roam"] $ws1
->>>>>>> rearrange workspaces
 
 for_window [class=".*"] border pixel 0
 for_window [class=".*"] urgency disable
