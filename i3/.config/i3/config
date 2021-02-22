@@ -106,7 +106,7 @@ mode "resize" {
 
   bindsym l resize shrink height 10 px or 10 ppt
   bindsym semicolon resize grow width 10 px or 10 ppt
-
+:
   bindsym Left resize shrink width 10 px or 10 ppt
   bindsym Down resize grow height 10 px or 10 ppt
   bindsym Up resize shrink height 10 px or 10 ppt

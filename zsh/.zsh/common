@@ -47,24 +47,17 @@ antigen theme dracula/zsh
 
 antigen apply
 
-dockernuke() {
-  docker ps -a | \
-    tail -n+2 | \
-    awk '{ print $1 }' | \
-    xargs docker rm -f {}
-}
-
 updateme() {
   (
-    cd "$CODEDIR/scripts"
+    cd "$CODEDIR/thereforsunrise/scripts"
     git pull
   )
   (
-    cd "$CODEDIR/dotfiles"
+    cd "$CODEDIR/thereforsunrise/dotfiles"
     git pull
   )
 
-  "$CODEDIR/dotfiles/checkin.sh"
+  "$HOME/.dotfiles/checkin.sh"
 }
 
 alias s='make shell'
