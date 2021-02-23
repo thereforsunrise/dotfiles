@@ -58,6 +58,10 @@ is_package_installed() {
   dpkg -l | grep "\<${1}\>" &>/dev/null
 }
 
+is_python_package_installed() {
+  pip3 list | grep "\<${1}\>" &>/dev/null
+}
+
 is_binary_installed() {
   [[ -f "$1" ]]
 }
@@ -321,6 +325,12 @@ install_packages() {
   install_youtubedl
 }
 
+install_python_packages() {
+  if ! is_python_package_installed "gita"; then
+    pip3 install -U gita
+  fi
+}
+
 expand_templates() {
   find "$SCRIPTPATH" \
     -type f \
@@ -386,6 +396,7 @@ prompt_sudo
 setup_secret
 checkout_scripts
 install_packages
+install_python_packages
 expand_templates
 run_stow
 install_crons
