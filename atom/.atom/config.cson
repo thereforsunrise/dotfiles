@@ -5,6 +5,10 @@
       "github"
     ]
     telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "dracula-syntax"
+    ]
   editor:
     fontSize: 19
   "exception-reporting":
