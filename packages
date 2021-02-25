@@ -9,6 +9,7 @@ bsd-mailx
 build-essential
 ca-certificates
 calcurse
+cargo
 curl
 dialog
 direnv
@@ -39,6 +40,7 @@ libreadline6-dev
 libssl-dev
 libyaml-dev
 markdown
+mongodb-clients
 msmtp
 p7zip
 pavucontrol

@@ -85,7 +85,7 @@ install_package_from_http_if_not_installed() {
 install_antigen() {
   if ! is_binary_installed "$HOME/Projects/antigen.zsh"; then
     log "Installing antigen..."
-    curl -L git.io/antigen > \
+    curl -s -L git.io/antigen > \
       ~/Projects/antigen.zsh
   fi
 }
@@ -101,6 +101,7 @@ install_aws_rotate_key() {
   is_binary_installed "/usr/local/bin/aws-rotate-key" && return 0
 
   curl \
+    -s \
     -L "https://github.com/stefansundin/aws-rotate-key/releases/download/v1.0.7/aws-rotate-key-1.0.7-linux_amd64.zip" \
     -o "/tmp/aws-rotate-key-1.0.7-linux_amd64.zip"
 
@@ -117,6 +118,7 @@ install_awscli() {
   is_binary_installed "/usr/local/bin/aws" && return 0
 
   curl \
+    -s \
     -L "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" \
     -o "/tmp/awscliv2.zip"
 
@@ -131,6 +133,17 @@ install_braindump() {
   install_package_from_http_if_not_installed \
     "braindump" \
     "https://github.com/thereforsunrise/braindump/releases/download/0.1/BrainDump_1.0.0_amd64.deb"
+}
+
+install_cli53() {
+  is_binary_installed "/usr/local/bin/cli53" && return 0
+
+  sudo curl \
+        -s \
+        -L "https://github.com/barnybug/cli53/releases/download/0.8.18/cli53-linux-amd64" \
+        -o /usr/local/bin/cli53
+
+  sudo chmod +x /usr/local/bin/cli53
 }
 
 install_discord() {
@@ -165,6 +178,7 @@ install_docker_compose() {
   is_binary_installed "/usr/local/bin/docker-compose" && return 0
 
   sudo curl \
+        -s \
         -L "https://github.com/docker/compose/releases/download/1.28.2/docker-compose-$(uname -s)-$(uname -m)" \
         -o /usr/local/bin/docker-compose
 
@@ -291,8 +305,9 @@ install_youtubedl() {
   is_binary_installed "/usr/local/bin/youtube-dl" && return 0
 
   sudo curl \
-          -L https://yt-dl.org/downloads/latest/youtube-dl \
-          -o /usr/local/bin/youtube-dl
+        -s \
+        -L https://yt-dl.org/downloads/latest/youtube-dl \
+        -o /usr/local/bin/youtube-dl
 
   sudo chmod +x /usr/local/bin/youtube-dl
 }
@@ -309,6 +324,7 @@ install_packages() {
   install_aws_rotate_key
   install_awscli
   install_braindump
+  install_cli53
   install_discord
   install_docker
   install_docker_compose
