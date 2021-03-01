@@ -15,6 +15,6 @@ of changes etc
 When first setting up a machine, simply run:
 
 ```
-git clone git@github.com:zaargy/dotfiles.git ~/.dotfiles
+git clone git@github.com:thereforsunrise/dotfiles.git ~/.dotfiles
 ~/.dotfiles/checkin.sh
 ```
