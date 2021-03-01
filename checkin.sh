@@ -44,18 +44,18 @@ setup_secret() {
 }
 
 checkout_scripts() {
-  if [ ! -d ~/Projects/scripts ]; then
-    git clone git@github.com:thereforsunrise/scripts.git ~/Projects/scripts
+  if [ ! -d ~/Projects/thereforsunrise/scripts ]; then
+    git clone git@github.com:thereforsunrise/scripts.git ~/Projects/thereforsunrise/scripts
   else
     (
-      cd ~/Projects/scripts
+      cd ~/Projects/thereforsunrise/scripts
       git pull 1>/dev/null
     )
   fi
 }
 
 is_package_installed() {
-  dpkg -l | grep "\<${1}\>" &>/dev/null
+  dpkg -l | grep "\<${1}\> " &>/dev/null
 }
 
 is_python_package_installed() {
@@ -77,7 +77,7 @@ install_package_from_http_if_not_installed() {
   (
     cd /tmp
     wget -O "$package_name.deb" "$url" && \
-    sudo apt install "./$package_name.deb" && \
+    sudo apt install -y "./$package_name.deb" && \
     rm "./$package_name.deb"
   )
 }
@@ -169,7 +169,7 @@ install_docker() {
     stable"
 
   sudo apt-get update
-  sudo apt-get install docker-ce docker-ce-cli containerd.io
+  sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
   sudo gpasswd -a "$USER" docker
 }
@@ -202,7 +202,7 @@ install_gh() {
 
 install_google_chrome() {
   install_package_from_http_if_not_installed \
-    "google-chrome" \
+    "google-chrome-stable" \
     "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 }
 
@@ -210,7 +210,7 @@ install_kindle() {
   is_binary_installed "/opt/kindle/kindle" && return 0
 
   if ! npm list -g | grep nativefier; then
-    npm install -g nativefier
+    sudo npm install -g nativefier
   fi
 
   (
@@ -277,7 +277,7 @@ install_spotify() {
     sudo tee /etc/apt/sources.list.d/spotify.list
 
   sudo apt-get update && \
-    sudo apt-get install spotify-client
+    sudo apt-get install -y spotify-client
 }
 
 install_roam() {
@@ -286,7 +286,7 @@ install_roam() {
   [[ -f "/opt/roam/roam" ]] && return 0
 
   if ! npm list -g | grep nativefier; then
-    npm install -g nativefier
+    sudo npm install -g nativefier
   fi
 
   (

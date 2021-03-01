@@ -13,6 +13,7 @@ cargo
 curl
 dialog
 direnv
+dmenu
 emacs
 espeak
 evince
@@ -43,6 +44,7 @@ libyaml-dev
 markdown
 mongodb-clients
 msmtp
+npm
 p7zip
 pavucontrol
 pwgen
@@ -70,6 +72,7 @@ vlc
 wbritish
 winetricks
 xclip
+xdm
 xfonts-terminus
 xz-utils
 zlib1g-dev
