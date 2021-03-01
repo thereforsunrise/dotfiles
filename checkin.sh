@@ -22,14 +22,6 @@ create_standard_dirs() {
   if [ ! -L "$HOME/Projects/work" ]; then
     ln -s "$HOME/Projects/$WORK_COMPANY_NAME" "$HOME/Projects/work"
   fi
-
-  if [ ! -L "$HOME/.config/autokey/data/" ]; then
-    if [ -d  "$AUTOKEY_DATA" ]; then
-      rm -rf "$AUTOKEY_DATA"
-      mkdir -p "$HOME/.config/autokey"
-      ln -s "$AUTOKEY_DATA" "$HOME/.config/autokey/data"
-    fi
-  fi
 }
 
 prompt_sudo() {
