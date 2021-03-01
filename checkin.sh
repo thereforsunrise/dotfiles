@@ -9,6 +9,9 @@ log() {
 }
 
 create_standard_dirs() {
+  rm -rf ~/Desktop ~/Documents ~/Downloads ~/Music \
+    ~/Pictures ~/Public ~/Templates ~/Videos/
+
   mkdir -p "$HOME/Projects/$WORK_COMPANY_NAME"
   mkdir -p "$HOME/.msmtpqueue"
 
@@ -185,6 +188,12 @@ install_docker_compose() {
   sudo chmod +x /usr/local/bin/docker-compose
 }
 
+install_dropbox() {
+  install_package_from_http_if_not_installed \
+    "dropbox" \
+    "https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd64.deb"
+}
+
 install_espanso() {
   install_package_from_http_if_not_installed \
     "espanso" \
@@ -328,6 +337,7 @@ install_packages() {
   install_discord
   install_docker
   install_docker_compose
+  install_dropbox
   install_espanso
   install_kindle
   install_gh
