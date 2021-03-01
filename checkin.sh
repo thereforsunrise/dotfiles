@@ -281,6 +281,12 @@ install_spotify() {
     sudo apt-get install -y spotify-client
 }
 
+install_steam() {
+  install_package_from_http_if_not_installed \
+    "steam" \
+    "https://cdn.akamai.steamstatic.com/client/installer/steam.deb"
+}
+
 install_roam() {
   is_binary_installed "/opt/roam/roam" && return 0
 
@@ -339,6 +345,7 @@ install_packages() {
   install_rbenv
   install_slack
   install_spotify
+  install_steam
   install_roam
   install_youtubedl
 }
