@@ -32,8 +32,8 @@ bindsym $mod+Shift+semicolon move right
 set $mode_apps atom (a), chrome (c), journal (j), spotify (m), kindle (k), slack (s), rox-filer (u)
 mode "$mode_apps" {
   bindsym a exec --no-startup-id wmctrl-cycle-by-class atom, mode "default"
+  bindsym b exec --no-startup-id wmctrl-cycle-by-class Braindump, mode "default"
   bindsym c exec --no-startup-id wmctrl-cycle-by-class chrome, mode "default"
-  bindsym j exec --no-startup-id wmctrl-cycle-by-class Braindump, mode "default"
   bindsym k exec --no-startup-id wmctrl-cycle-by-name Kindle, mode "default"
   bindsym m exec --no-startup-id wmctrl-cycle-by-class Spotify, mode "default"
   bindsym s exec --no-startup-id wmctrl-cycle-by-class slack, mode "default"
@@ -46,7 +46,7 @@ mode "$mode_apps" {
   bindsym Escape mode "default"
 }
 
-bindsym $mod+z mode "$mode_apps"
+bindsym $mod+space mode "$mode_apps"
 
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down

@@ -337,7 +337,7 @@ install_packages() {
   install_docker_compose
   install_dropbox
   install_espanso
-  install_kindle
+  #install_kindle
   install_gh
   install_google_chrome
   install_lite
