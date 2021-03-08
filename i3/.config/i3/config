@@ -1,6 +1,6 @@
 set $mod Mod4
 
-font pango:Inconsolata Medium 18
+font pango:Inconsolata Medium 14
 
 floating_modifier $mod
 
@@ -153,8 +153,8 @@ bar {
   status_command i3blocks
   position bottom
 
-  tray_output primary
-  #tray_output none
+  #tray_output primary
+  tray_output none
 
   workspace_buttons yes
 
