@@ -10,6 +10,7 @@ build-essential
 ca-certificates
 calcurse
 cargo
+cheese
 curl
 dialog
 direnv
