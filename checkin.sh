@@ -138,7 +138,7 @@ install_brave() {
   echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | \
     sudo tee /etc/apt/sources.list.d/brave-browser-release.list
   sudo apt update
-  sudo apt install brave-browser
+  sudo apt install -y brave-browser
 }
 
 install_cli53() {
@@ -294,7 +294,7 @@ install_spotify() {
 
 install_steam() {
   install_package_from_http_if_not_installed \
-    "steam" \
+    "steam-launcher" \
     "https://cdn.akamai.steamstatic.com/client/installer/steam.deb"
 }
 
