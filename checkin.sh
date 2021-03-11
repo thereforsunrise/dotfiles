@@ -130,6 +130,17 @@ install_braindump() {
     "https://github.com/thereforsunrise/braindump/releases/download/0.1/BrainDump_1.0.0_amd64.deb"
 }
 
+install_brave() {
+  is_package_installed "brave-browser" && return 0
+
+  curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | \
+    sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
+  echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | \
+    sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+  sudo apt update
+  sudo apt install brave-browser
+}
+
 install_cli53() {
   is_binary_installed "/usr/local/bin/cli53" && return 0
 
@@ -331,6 +342,7 @@ install_packages() {
   install_aws_rotate_key
   install_awscli
   install_braindump
+  install_brave
   install_cli53
   install_discord
   install_docker
