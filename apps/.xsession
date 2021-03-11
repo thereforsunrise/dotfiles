@@ -10,7 +10,7 @@ run_if_on_path () {
 
 source ~/.zsh/common
 
-run_if_on_path "~/.dropbox-dist/dropboxd"
+run_if_on_path "$HOME/.dropbox-dist/dropboxd"
 run_if_on_path "blueman-applet"
 run_if_on_path "braindump"
 run_if_on_path "dunst"
