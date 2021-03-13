@@ -2,3 +2,4 @@
 
 xrandr --dpi 125.37 &
 cbatticon &
+xsetroot -solid gray12 &
