@@ -342,7 +342,7 @@ install_packages() {
   install_aws_rotate_key
   install_awscli
   install_braindump
-  install_brave
+  #install_brave
   install_cli53
   install_discord
   install_docker
