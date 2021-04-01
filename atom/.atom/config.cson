@@ -5,6 +5,7 @@
       "github"
     ]
     telemetryConsent: "no"
+    useTreeSitterParsers: false
   editor:
     fontSize: 19
   "exception-reporting":
