@@ -19,6 +19,7 @@ dunst
 emacs
 espeak
 evince
+extlinux
 feh
 ffmpeg
 fonts-hack
@@ -66,6 +67,7 @@ spell
 sshpass
 stow
 streamer
+syslinux
 testdisk
 tig
 tmux
@@ -77,6 +79,7 @@ vim-nox
 vlc
 wbritish
 whois
+wimtools
 winetricks
 xclip
 xdm
