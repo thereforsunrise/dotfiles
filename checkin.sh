@@ -124,6 +124,17 @@ install_awscli() {
   )
 }
 
+install_bootiso() {
+  is_binary_installed "/usr/local/bin/bootiso" && return 0
+
+  sudo curl \
+        -s \
+        -L "https://git.io/bootiso" \
+        -o /usr/local/bin/bootiso
+
+  sudo chmod +x /usr/local/bin/bootiso
+}
+
 install_braindump() {
   install_package_from_http_if_not_installed \
     "braindump" \
@@ -341,6 +352,7 @@ install_packages() {
   install_atom
   install_aws_rotate_key
   install_awscli
+  install_bootiso
   install_braindump
   #install_brave
   install_cli53
