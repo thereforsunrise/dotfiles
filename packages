@@ -50,8 +50,10 @@ libyaml-dev
 markdown
 mongodb-clients
 msmtp
+mysql-client
 npm
 p7zip
+parallel
 pavucontrol
 pwgen
 python2
