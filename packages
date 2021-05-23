@@ -53,6 +53,7 @@ markdown
 mongodb-clients
 msmtp
 mysql-client
+nestopia
 npm
 p7zip
 parallel
@@ -76,6 +77,7 @@ testdisk
 tig
 tmux
 tree
+tzwatch
 unattended-upgrades
 unzip
 vdirsyncer
