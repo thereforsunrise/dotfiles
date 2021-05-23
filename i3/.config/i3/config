@@ -160,8 +160,8 @@ bar {
   status_command i3blocks
   position bottom
 
-  #tray_output primary
-  tray_output none
+  tray_output primary
+  #tray_output none
 
   workspace_buttons yes
 
