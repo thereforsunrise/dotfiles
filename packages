@@ -45,6 +45,7 @@ libffi-dev
 libgdbm6
 libgdbm-dev
 libncurses5-dev
+libnss3-tools
 libreadline6-dev
 libssl-dev
 libyaml-dev
