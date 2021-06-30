@@ -14,7 +14,7 @@ imwheel -b "4 5" &
 nm-applet &
 parcellite &
 pasystray &
-random-background.sh &
+xsetroot -solid '#282A36' &
 setxkbmap -option caps:escape &
 xset r rate 250 60 &
 xset s off -dpm &

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
 xrandr --dpi 125.37 &
-cbatticon &
-# xsetroot -solid gray12 &
-feh  --bg-fill /home/jg/Dropbox/Media/images/wallpapers/wallpapersden.com_forest-mountains-sunset-cool-weather-minimalism_2560x1440.jpg &
+#cbatticon &
+xsetroot -solid gray12 &
+#feh  --bg-fill /home/jg/Dropbox/Media/images/wallpapers/wallpapersden.com_forest-mountains-sunset-cool-weather-minimalism_2560x1440.jpg &
