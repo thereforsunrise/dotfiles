@@ -208,6 +208,25 @@ install_dropbox() {
     "https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd64.deb"
 }
 
+install_elixir() {
+  is_package_installed "elixir" && return 0
+
+  log "Install Elixir..."
+
+  curl \
+    -s \
+    -L "https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb" \
+    -o "/tmp/erlang-solutions_2.0_all.deb"
+
+  (
+    cd /tmp/
+    sudo dpkg -i "erlang-solutions_2.0_all.deb"
+  )
+
+  sudo apt-get update
+  sudo apt-get install -y esl-erlang elixir
+}
+
 install_espanso() {
   install_package_from_http_if_not_installed \
     "espanso" \
@@ -360,6 +379,7 @@ install_packages() {
   install_docker
   install_docker_compose
   install_dropbox
+  install_elixir
   install_espanso
   #install_kindle
   install_gh
