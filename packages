@@ -49,6 +49,8 @@ libnss3-tools
 libreadline6-dev
 libssl-dev
 libyaml-dev
+lm-sensors
+ltris
 markdown
 mongodb-clients
 msmtp
