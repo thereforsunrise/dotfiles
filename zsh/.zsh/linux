@@ -1,8 +1,9 @@
 
 export PATH="$HOME/.rbenv/bin:$HOME/.local/bin:$PATH"
 
-alias agu='sudo apt-get update'
 alias acs='sudo apt-cache search'
+alias agu='sudo apt-get update'
+alias cam='guvcview'
 alias down='shutdown now'
 alias halt='shutdown now'
 
@@ -11,7 +12,6 @@ eval "$(rbenv init -)"
 export NVM_DIR="$HOME/.nvm"
 
 source "$NVM_DIR/nvm.sh"
-
 
 emacs() {
   (/usr/bin/emacs &)
