@@ -303,6 +303,19 @@ install_rbenv() {
   git clone https://github.com/rbenv/ruby-build.git "$rbenv_path"/plugins/ruby-build
 }
 
+install_signal() {
+  is_package_installed "signal-desktop" && return 0
+
+  wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
+  cat signal-desktop-keyring.gpg | sudo tee -a /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null
+
+  echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' |\
+    sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
+
+  sudo apt update && sudo apt install signal-desktop
+}
+
+
 install_slack() {
   install_package_from_http_if_not_installed \
     "slack-desktop" \
@@ -387,6 +400,7 @@ install_packages() {
   install_lite
   install_nvm
   install_rbenv
+  install_signal
   install_slack
   install_spotify
   install_steam
