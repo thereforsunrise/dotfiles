@@ -7,7 +7,7 @@
     telemetryConsent: "no"
     useTreeSitterParsers: false
   editor:
-    fontSize: 21
+    fontSize: 22
   "exception-reporting":
     userId: "b674d180-ee8a-4766-9d2c-640123c4c1cf"
   "linter-terraform-syntax":
