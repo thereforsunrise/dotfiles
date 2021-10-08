@@ -88,6 +88,7 @@ tig
 tmux
 tree
 tzwatch
+uchardet
 unattended-upgrades
 unzip
 vdirsyncer
@@ -100,6 +101,7 @@ winetricks
 xclip
 xdm
 xfonts-terminus
+xsel
 xz-utils
 zlib1g-dev
 zsh
