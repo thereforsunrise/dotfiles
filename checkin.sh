@@ -341,6 +341,19 @@ install_steam() {
     "https://cdn.akamai.steamstatic.com/client/installer/steam.deb"
 }
 
+install_sublime() {
+  is_package_installed "sublime-text" && return 0
+
+  curl -sS https://download.sublimetext.com/sublimehq-pub.gpg | \
+    sudo apt-key add -
+
+  echo "deb https://download.sublimetext.com/ apt/stable/" | \
+    sudo tee /etc/apt/sources.list.d/sublime-text.list
+
+  sudo apt-get update && \
+    sudo apt-get install sublime-text
+}
+
 install_roam() {
   is_binary_installed "/opt/roam/roam" && return 0
 
@@ -404,6 +417,7 @@ install_packages() {
   install_slack
   install_spotify
   install_steam
+  install_sublime
   install_roam
   install_youtubedl
 }
