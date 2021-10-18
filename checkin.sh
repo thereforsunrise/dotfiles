@@ -481,6 +481,15 @@ make_git_config_readonly() {
   chmod 444 ~/.dotfiles/git/.gitconfig
 }
 
+copy_msmtp_scripts() {
+  for e in msmtp-enqueue.sh msmtp-runqueue.sn msmtp-listqueue.sh; do
+    if [ ! -f "/usr/local/bin/$e" ]; then
+      sudo cp "/usr/share/doc/msmtp/examples/msmtpqueue/$e" /usr/local/bin
+      sudo chmod 755 "/usr/share/doc/msmtp/examples/msmtpqueue/$e"
+    fi
+  done
+}
+
 if [[ ! -z "$1" ]]; then
   eval "$1"
   exit
@@ -499,3 +508,4 @@ run_stow
 install_crons
 make_git_config_readonly
 change_shell
+copy_msmtp_scripts
