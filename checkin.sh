@@ -482,10 +482,10 @@ make_git_config_readonly() {
 }
 
 copy_msmtp_scripts() {
-  for e in msmtp-enqueue.sh msmtp-runqueue.sn msmtp-listqueue.sh; do
+  for e in msmtp-enqueue.sh msmtp-runqueue.sh msmtp-listqueue.sh; do
     if [ ! -f "/usr/local/bin/$e" ]; then
       sudo cp "/usr/share/doc/msmtp/examples/msmtpqueue/$e" /usr/local/bin
-      sudo chmod 755 "/usr/share/doc/msmtp/examples/msmtpqueue/$e"
+      sudo chmod 755 "/usr/local/bin/$e"
     fi
   done
 }
