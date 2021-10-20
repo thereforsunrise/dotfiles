@@ -20,3 +20,5 @@ autokey/.config/autokey/data
 /apps/.msmtprc
 /apps/.gitconfig_personal
 /apps/.gitconfig_work
+linter.log
+super-linter.log
