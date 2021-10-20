@@ -248,6 +248,18 @@ install_google_chrome() {
     "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 }
 
+install_k6() {
+  is_package_installed "k6" && return 0
+
+  curl -Ss https://dl.k6.io/key.gpg | sudo apt-key add -
+
+  echo "deb https://dl.k6.io/deb stable main" | \
+    sudo tee /etc/apt/sources.list.d/k6.list
+
+  sudo apt-get update && \
+    sudo apt-get install k6
+}
+
 install_kindle() {
   is_binary_installed "/opt/kindle/kindle" && return 0
 
@@ -398,8 +410,9 @@ install_packages() {
   install_aws_rotate_key
   install_awscli
   install_bootiso
-  install_braindump
   #install_brave
+  #install_kindle
+  install_braindump
   install_cli53
   install_discord
   install_docker
@@ -407,9 +420,9 @@ install_packages() {
   install_dropbox
   install_elixir
   install_espanso
-  #install_kindle
   install_gh
   install_google_chrome
+  install_k6
   install_lite
   install_nvm
   install_rbenv
