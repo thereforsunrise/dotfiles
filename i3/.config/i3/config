@@ -12,6 +12,8 @@ bindsym $mod+Shift+r restart
 
 bindsym $mod+n exec rename-workspace
 bindsym $mod+t exec pomo-dmenu
+bindsym $mod+y exec pomo "20" "pomodoro"
+
 bindsym $mod+u exec set-wd-for-ws.sh
 
 bindsym $mod+j focus left
@@ -142,19 +144,19 @@ bindsym $mod+Shift+Tab exec --no-startup-id rofi -theme ~/.onedark.rasi -show wi
 bindsym $mod+Tab workspace back_and_forth
 
 # class                 border  bground text    indicator child_border
-# client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-# client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-# client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-# client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-# client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
-# client.background       #F8F8F2
+ client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+ client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+ client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+ client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+ client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+client.background       #F8F8F2
 
-client.focused          $base05 $base0D $base00 $base0D $base0C
-client.focused_inactive $base01 $base01 $base05 $base03 $base01
-client.unfocused        $base01 $b:ase00 $base05 $base01 $base01
-client.urgent           $base08 $base08 $base00 $base08 $base08
-client.placeholder      $base00 $base00 $base05 $base00 $base00
-client.background       $base07
+#client.focused          $base05 $base0D $base00 $base0D $base0C
+#client.focused_inactive $base01 $base01 $base05 $base03 $base01
+#client.unfocused        $base01 $b:ase00 $base05 $base01 $base01
+#client.urgent           $base08 $base08 $base00 $base08 $base08
+#client.placeholder      $base00 $base00 $base05 $base00 $base00
+#client.background       $base07
 
 bar {
   status_command i3blocks
@@ -200,6 +202,5 @@ assign [class="read.amazon.co.uk"] $ws6
 assign [class="roam"] $ws1
 
 for_window [class=".*"] border pixel 0
-for_window [class=".*"] urgency disable
 
 workspace_auto_back_and_forth yes
