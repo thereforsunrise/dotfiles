@@ -319,7 +319,7 @@ install_signal() {
   is_package_installed "signal-desktop" && return 0
 
   wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
-  sudo tee -a /usr/share/keyrings/signal-desktop-keyring.gpg < signal-desktop-keyring.gpg  > /dev/null
+  sudo cp signal-desktop-keyring.gpg /usr/share/keyrings/signal-desktop-keyring.gpg
 
   echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' |\
     sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
