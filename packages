@@ -34,6 +34,7 @@ gnupg-agent
 golang
 guvcview
 gvfs
+httperf
 httpie
 hunspell-en-gb
 i3blocks
@@ -102,6 +103,7 @@ winetricks
 xclip
 xdm
 xfonts-terminus
+xosd-bin
 xsel
 xz-utils
 zlib1g-dev
