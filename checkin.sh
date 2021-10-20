@@ -2,7 +2,7 @@
 
 # supposedly the most reliable way to determine a script's path
 # according to stack overflow :-(
-SCRIPTPATH="$(cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P)"
+SCRIPTPATH="$(cd "$(dirname "$0")" || exit >/dev/null 2>&1 ; pwd -P)"
 
 log() {
   echo -e "[$(date --iso-8601=minutes)] \t ${1}"
@@ -43,7 +43,7 @@ checkout_scripts() {
     git clone git@github.com:thereforsunrise/scripts.git ~/Projects/thereforsunrise/scripts
   else
     (
-      cd ~/Projects/thereforsunrise/scripts
+      cd ~/Projects/thereforsunrise/scripts || exit
       git pull 1>/dev/null
     )
   fi
@@ -70,7 +70,7 @@ install_package_from_http_if_not_installed() {
   log "Installing $package_name from $url..."
 
   (
-    cd /tmp
+    cd /tmp || exit
     wget -O "$package_name.deb" "$url" && \
     sudo apt install -y "./$package_name.deb" && \
     rm "./$package_name.deb"
@@ -101,7 +101,7 @@ install_aws_rotate_key() {
     -o "/tmp/aws-rotate-key-1.0.7-linux_amd64.zip"
 
   (
-    cd /tmp/
+    cd /tmp || exit
     unzip "aws-rotate-key-1.0.7-linux_amd64.zip"
     sudo mv aws-rotate-key /usr/local/bin
   )
@@ -118,7 +118,7 @@ install_awscli() {
     -o "/tmp/awscliv2.zip"
 
   (
-    cd /tmp
+    cd /tmp || exit
     unzip awscliv2.zip
     sudo ./aws/install
   )
@@ -219,7 +219,7 @@ install_elixir() {
     -o "/tmp/erlang-solutions_2.0_all.deb"
 
   (
-    cd /tmp/
+    cd /tmp || exit
     sudo dpkg -i "erlang-solutions_2.0_all.deb"
   )
 
@@ -268,7 +268,7 @@ install_kindle() {
   fi
 
   (
-    cd /tmp
+    cd /tmp || exit
     nativefier -n kindle --full-screen  "https://https://read.amazon.com/"
     sudo mv /tmp/kindle-linux-x64 /opt/kindle
   )
@@ -297,7 +297,7 @@ install_lite() {
     -o "/tmp/lite.zip"
 
   (
-    cd /tmp
+    cd /tmp || exit
     unzip lite.zip -d lite
     sudo mv lite /opt
   )
@@ -319,7 +319,7 @@ install_signal() {
   is_package_installed "signal-desktop" && return 0
 
   wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
-  cat signal-desktop-keyring.gpg | sudo tee -a /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null
+  sudo tee -a /usr/share/keyrings/signal-desktop-keyring.gpg < signal-desktop-keyring.gpg  > /dev/null
 
   echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' |\
     sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
@@ -376,7 +376,7 @@ install_roam() {
   fi
 
   (
-    cd /tmp
+    cd /tmp || exit
     nativefier -n roam --full-screen  "https://roamResearch.com"
     sudo mv /tmp/roam-linux-x64 /opt/roam/
   )
@@ -402,7 +402,7 @@ install_packages() {
   log "Updating apt cache.."
   sudo apt-get update 1>/dev/null
 
-  cat "$SCRIPTPATH/packages" "packages.$(hostname -s | tr '[A-Z]' '[a-z]')" 2>/dev/null | \
+  cat "$SCRIPTPATH/packages" "packages.$(hostname -s | tr '[:upper:]' '[:lower:]')" 2>/dev/null | \
     xargs sudo apt-get install -y 1>/dev/null
 
   install_antigen
@@ -445,14 +445,14 @@ expand_templates() {
   find "$SCRIPTPATH" \
     -type f \
     -name "*.esub" | \
-  while read template; do
+  while read -r template; do
     log "Expanding template $template..."
 
     real_config="${template%.*}"
 
     envsubst < "$template" > "$real_config"
-    if ! grep $(echo $real_config | sed "s#$SCRIPTPATH##") "$SCRIPTPATH/.gitignore" &>/dev/null; then
-      echo $(echo $real_config | sed "s#$SCRIPTPATH##") >> "$SCRIPTPATH/.gitignore"
+    if ! grep "${real_config//$SCRIPTPATH/}" "$SCRIPTPATH/.gitignore" &>/dev/null; then
+      echo "${real_config//$SCRIPTPATH/}" >> "$SCRIPTPATH/.gitignore"
     fi
   done
 }
@@ -464,7 +464,7 @@ run_stow() {
     -not \
     -name ".*" \
     -exec basename {} \; | sort | \
-  while read stow_package; do
+  while read -r stow_package; do
     log "Stowing $stow_package..."
     stow --adopt "$stow_package"
   done
@@ -503,7 +503,7 @@ copy_msmtp_scripts() {
   done
 }
 
-if [[ ! -z "$1" ]]; then
+if [[ -n "$1" ]]; then
   eval "$1"
   exit
 fi
