@@ -14,6 +14,7 @@ create_standard_dirs() {
 
   mkdir -p "$HOME/Projects/$WORK_COMPANY_NAME"
   mkdir -p "$HOME/.msmtpqueue"
+  mkdir -p "$HOME/Mail/.mutt"
 
   if [ ! -L "$HOME/Projects/thereforsunrise/dotfiles" ]; then
     ln -s "$HOME/.dotfiles/" "$HOME/Projects/thereforsunrise/dotfiles"
