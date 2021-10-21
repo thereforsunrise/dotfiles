@@ -12,8 +12,7 @@
     userId: "b674d180-ee8a-4766-9d2c-640123c4c1cf"
   "linter-terraform-syntax":
     newVersion: true
-  "markdown-preview":
-    breakOnSingleNewline: true
+  "markdown-preview": {}
   "one-dark-ui":
     fontSize: 14
   "tree-view":
