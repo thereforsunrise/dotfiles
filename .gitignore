@@ -22,3 +22,6 @@ autokey/.config/autokey/data
 /apps/.gitconfig_work
 linter.log
 super-linter.log
+/himalaya/.config/himalya/config.toml
+/himalaya/.config/himalaya/config.toml
+/apps/.offlineimaprc
