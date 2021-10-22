@@ -289,6 +289,12 @@ install_nvm() {
   nvm install node
 }
 
+install_pulumi() {
+  is_binary_installed "$HOME/.pulumi/bin/pulumi" && return 0
+
+  curl -fsSL https://get.pulumi.com/ | sh
+}
+
 install_lite() {
   is_binary_installed "/usr/local/bin/lite" && return 0
 
@@ -426,6 +432,7 @@ install_packages() {
   install_k6
   install_lite
   install_nvm
+  install_pulumi
   install_rbenv
   install_signal
   install_slack

@@ -17,6 +17,7 @@ dialog
 direnv
 dmenu
 dunst
+elinks
 emacs
 espeak
 evince
@@ -34,6 +35,8 @@ gnupg-agent
 golang
 guvcview
 gvfs
+higan
+html2text
 httperf
 httpie
 hunspell-en-gb
@@ -56,6 +59,7 @@ libnss3-tools
 libreadline6-dev
 libssl-dev
 libyaml-dev
+links
 lm-sensors
 ltris
 markdown
@@ -98,6 +102,7 @@ unzip
 vdirsyncer
 vim-nox
 vlc
+w3m
 wbritish
 whois
 wimtools

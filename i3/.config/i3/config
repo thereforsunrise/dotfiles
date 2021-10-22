@@ -69,16 +69,16 @@ bindsym $mod+minus focus mode_toggle
 
 bindsym $mod+a focus parent
 
-set $ws0 "0 braindump"
-set $ws1 "1 roam"
-set $ws2 "2 www"
+set $ws0 0
+set $ws1 1
+set $ws2 2
 set $ws3 3
 set $ws4 4
-set $ws5 "5 steam"
-set $ws6 "6 kindle"
-set $ws7 "7 spotify"
-set $ws8 "8 discord"
-set $ws9 "9 slack"
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
 
 bindsym $mod+0 workspace number $ws0
 bindsym $mod+1 workspace number $ws1
