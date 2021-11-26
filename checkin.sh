@@ -249,6 +249,18 @@ install_google_chrome() {
     "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 }
 
+install_google_endpoint_verification() {
+  is_package_installed "endpoint-verification" && return 0
+
+  echo "deb https://packages.cloud.google.com/apt endpoint-verification main" | \
+    sudo tee -a /etc/apt/sources.list.d/endpoint-verification.list
+  curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | \
+    sudo apt-key add -
+
+  sudo apt-get update && \
+    sudo apt install endpoint-verification
+}
+
 install_k6() {
   is_package_installed "k6" && return 0
 
@@ -258,7 +270,7 @@ install_k6() {
     sudo tee /etc/apt/sources.list.d/k6.list
 
   sudo apt-get update && \
-    sudo apt-get install k6
+    sudo apt install k6
 }
 
 install_kindle() {
@@ -279,7 +291,6 @@ install_kindle() {
   jq '.name="kindle"' /opt/kindle/resources/app/package.json  > "$t"
   sudo mv "$t" /opt/kindle/resources/app/package.json
 }
-
 
 install_nvm() {
   [[ -d "$HOME/.nvm" ]] && return 0
@@ -429,6 +440,7 @@ install_packages() {
   install_espanso
   install_gh
   install_google_chrome
+  install_google_endpoint_verification
   install_k6
   install_lite
   install_nvm

@@ -1,1 +1,1 @@
-text/html; iconv -c -f %{charset} -t LATIN1//TRANSLIT | html2text -style pretty; copiousoutput; description=HTML Text
+iconv -c -f %{charset} -t LATIN1//TRANSLIT | html2text -style pretty; copiousoutput; description=HTML Text
