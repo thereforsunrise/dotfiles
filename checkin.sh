@@ -323,6 +323,22 @@ install_lite() {
   sudo ln -s /opt/lite/lite /usr/local/bin/lite
 }
 
+install_logseq() {
+  is_binary_installed "/usr/local/bin/logseq" && return 0
+
+  curl \
+    -s \
+    -L "https://github.com/logseq/logseq/releases/download/0.5.2/Logseq-linux-x64-0.5.2.AppImage" \
+    -o "/tmp/Logseq-linux-x64-0.5.2.AppImage"
+
+  (
+    cd /tmp
+    sudo mv Logseq-linux-x64-0.5.2.AppImage /usr/local/bin/logseq
+  )
+
+  sudo chmod 755 /usr/local/bin/logseq
+}
+
 install_rbenv() {
   local rbenv_path="$HOME/.rbenv"
 
@@ -443,6 +459,7 @@ install_packages() {
   install_google_endpoint_verification
   install_k6
   install_lite
+  install_logseq
   install_nvm
   install_pulumi
   install_rbenv
