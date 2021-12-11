@@ -49,6 +49,7 @@ ipcalc
 jq
 keynav
 khal
+krita
 lame
 libdb-dev
 libffi-dev
@@ -76,6 +77,7 @@ p7zip-full
 parallel
 pavucontrol
 photoflare
+pulseaudio-utils
 pwgen
 python2
 python3
