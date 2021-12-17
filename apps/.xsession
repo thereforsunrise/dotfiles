@@ -6,7 +6,6 @@ source "$HOME/.zsh/common"
 "$HOME/.dropbox-dist/dropboxd" &
 
 blueman-applet &
-braindump &
 dunst &
 google-chrome &
 gtk-redshift &

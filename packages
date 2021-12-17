@@ -28,11 +28,13 @@ fonts-hack
 fonts-inconsolata
 fonts-terminus
 freecad
+git
 git-crypt
 gnupg
 gnupg2
 gnupg-agent
 golang
+gtk-redshift
 guvcview
 gvfs
 higan
@@ -43,6 +45,7 @@ hunspell-en-gb
 i3blocks
 i3lock
 i3-wm
+imwheel
 inotify-tools
 iotop
 ipcalc
@@ -75,6 +78,8 @@ offlineimap
 p7zip
 p7zip-full
 parallel
+parcellite
+pasystray
 pavucontrol
 photoflare
 pulseaudio-utils
@@ -83,6 +88,7 @@ python2
 python3
 python3-dev
 python3-pip
+redshift
 ripgrep
 rofi
 rox-filer
