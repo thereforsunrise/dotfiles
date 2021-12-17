@@ -42,6 +42,7 @@ html2text
 httperf
 httpie
 hunspell-en-gb
+hwinfo
 i3blocks
 i3lock
 i3-wm
@@ -68,10 +69,12 @@ lm-sensors
 ltris
 markdown
 mongodb-clients
+mr
 msmtp
 msort
 mutt
 mysql-client
+ncdu
 nestopia
 npm
 offlineimap
@@ -81,6 +84,7 @@ parallel
 parcellite
 pasystray
 pavucontrol
+pciutils
 photoflare
 pulseaudio-utils
 pwgen

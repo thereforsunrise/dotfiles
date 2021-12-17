@@ -6,6 +6,7 @@ alias agu='sudo apt-get update'
 alias cam='guvcview'
 alias down='shutdown now'
 alias halt='shutdown now'
+alias mr='mr -j10'
 
 eval "$(rbenv init -)"
 
@@ -16,3 +17,4 @@ source "$NVM_DIR/nvm.sh"
 emacs() {
   (/usr/bin/emacs &)
 }
+
