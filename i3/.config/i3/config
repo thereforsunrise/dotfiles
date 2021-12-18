@@ -158,7 +158,7 @@ bar {
 
   workspace_buttons yes
 
-  mode hide
+  mode invisible
 
   colors {
    background #282A36

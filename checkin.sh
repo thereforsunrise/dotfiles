@@ -334,7 +334,7 @@ install_logseq() {
     -o "/tmp/Logseq-linux-x64-0.5.2.AppImage"
 
   (
-    cd /tmp
+    cd /tmp || exit 
     sudo mv Logseq-linux-x64-0.5.2.AppImage /usr/local/bin/logseq
   )
 
