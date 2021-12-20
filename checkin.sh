@@ -543,7 +543,13 @@ copy_msmtp_scripts() {
 }
 
 create_mrconfig() {
-  cat ~/.mrconfig_personal ~/.mrconfig_work > ~/.mrconfig
+  cat ~/.mrconfig_* > ~/.mrconfig
+}
+
+allow_passwordless_sudo_for_current_user() {
+  local USER="$(whoami)"
+
+  echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee "/etc/sudoers.d/$USER" > /dev/null
 }
 
 if [[ -n "$1" ]]; then
@@ -566,3 +572,4 @@ make_git_config_readonly
 change_shell
 copy_msmtp_scripts
 create_mrconfig
+allow_passwordless_sudo_for_current_user
