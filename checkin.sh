@@ -294,7 +294,7 @@ install_kindle() {
 
 install_nvm() {
   [[ -d "$HOME/.nvm" ]] && return 0
-  
+
   # what could go wrong?!
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 
@@ -334,7 +334,7 @@ install_logseq() {
     -o "/tmp/Logseq-linux-x64-0.5.2.AppImage"
 
   (
-    cd /tmp || exit 
+    cd /tmp || exit
     sudo mv Logseq-linux-x64-0.5.2.AppImage /usr/local/bin/logseq
   )
 
@@ -374,8 +374,8 @@ install_spotify() {
   is_package_installed "spotify-client" && return 0
 
   curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | \
-    sudo apt-key add - 
-  
+    sudo apt-key add -
+
   echo "deb http://repository.spotify.com stable non-free" | \
     sudo tee /etc/apt/sources.list.d/spotify.list
 
@@ -542,6 +542,10 @@ copy_msmtp_scripts() {
   done
 }
 
+create_mrconfig() {
+  cat ~/.mrconfig_personal ~/.mrconfig_work > ~/.mrconfig
+}
+
 if [[ -n "$1" ]]; then
   eval "$1"
   exit
@@ -561,3 +565,4 @@ install_crons
 make_git_config_readonly
 change_shell
 copy_msmtp_scripts
+create_mrconfig

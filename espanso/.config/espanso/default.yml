@@ -12,13 +12,21 @@ matches:
     replace: "Hi there!"
 
   # Dates
-  - trigger: ":date"
+  - trigger: ":datetime"
     replace: "{{mydate}}"
     vars:
       - name: mydate
         type: date
         params:
-          format: "%m/%d/%Y"
+          format: "%m/%d/%Y %H:%M:%S"
+
+  - trigger: ":bl"
+    replace: "[[Brain Log]] {{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%m/%d/%Y %H:%M:%S"
 
   # Shell commands
   - trigger: ":shell"
