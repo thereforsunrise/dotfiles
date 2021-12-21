@@ -550,7 +550,23 @@ copy_msmtp_scripts() {
   done
 }
 
-create_mrconfig() {
+generate_mrconfig() {
+  for wr in $WORK_REPOS; do
+cat <<EOF | sudo tee ~/.mrconfig_work >/dev/null
+[\$WORK_PROJECTS_DIR/$wr]
+checkout = git clone '\$WORK_GIT_BASE/$wr' '$wr'
+
+EOF
+  done
+
+  for pr in $PERSONAL_REPOS; do
+cat <<EOF | sudo tee ~/.mrconfig_personal >/dev/null
+[\$PERSONAL_PROJECTS_DIR/$pr]
+checkout = git clone '\$PERSONAL_GIT_BASE/$pr' '$pr'
+
+EOF
+  done
+
   cat ~/.mrconfig_* > ~/.mrconfig
 }
 
@@ -558,6 +574,29 @@ allow_passwordless_sudo_for_current_user() {
   local USER="$(whoami)"
 
   echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee "/etc/sudoers.d/$USER" > /dev/null
+}
+
+configure_thinkfan() {
+  if [[ $(hostname -s) == "data" ]]; then
+cat <<EOF | sudo tee /etc/thinkfan.conf >/dev/null
+hwmon /sys/devices/platform/coretemp.0/hwmon/hwmon8/temp1_input
+hwmon /sys/devices/platform/coretemp.0/hwmon/hwmon8/temp2_input
+hwmon /sys/devices/platform/coretemp.0/hwmon/hwmon8/temp3_input
+
+(0,	0,	60)
+(1,	60,	65)
+(2,	65,	70)
+(3,	70,	75)
+(4,	75,	80)
+(5,	80,	85)
+(7,	85,	32767)
+EOF
+  fi
+}
+
+generate_secret_example() {
+   cat ~/.secret | cut -f1 -d= | xargs -I {} echo {}= | \
+    tee "$SCRIPTPATH/.secret.example" >/dev/null
 }
 
 if [[ -n "$1" ]]; then
@@ -579,5 +618,7 @@ install_crons
 make_git_config_readonly
 change_shell
 copy_msmtp_scripts
-create_mrconfig
+generate_mrconfig
 allow_passwordless_sudo_for_current_user
+configure_thinkfan
+generate_secret_example
