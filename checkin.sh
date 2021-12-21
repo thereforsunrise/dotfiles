@@ -551,16 +551,17 @@ copy_msmtp_scripts() {
 }
 
 generate_mrconfig() {
+  echo | tee  ~/.mrconfig_work >/dev/null
   for wr in $WORK_REPOS; do
-cat <<EOF | sudo tee -a ~/.mrconfig_work >/dev/null
+cat <<EOF | tee -a ~/.mrconfig_work >/dev/null
 [$WORK_PROJECTS_DIR/$wr]
 checkout = git clone "$WORK_GIT_BASE/$wr" '$wr'
 
 EOF
   done
-
+  echo | tee  ~/.mrconfig_personal >/dev/null
   for pr in $PERSONAL_REPOS; do
-cat <<EOF | sudo tee -a ~/.mrconfig_personal >/dev/null
+cat <<EOF | tee -a ~/.mrconfig_personal >/dev/null
 [$PERSONAL_PROJECTS_DIR/$pr]
 checkout = git clone "$PERSONAL_GIT_BASE/$pr" '$pr'
 
