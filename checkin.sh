@@ -164,6 +164,13 @@ install_cli53() {
   sudo chmod +x /usr/local/bin/cli53
 }
 
+install_circlecicli() {
+  is_binary_installed "/usr/local/bin/circleci" & return 0
+
+  curl -fLSs https://raw.githubusercontent.com/CircleCI-Public/circleci-cli/master/install.sh | \
+    sudo bash
+}
+
 install_discord() {
   install_package_from_http_if_not_installed \
     "discord" \
@@ -450,6 +457,7 @@ install_packages() {
   #install_kindle
   install_braindump
   install_cli53
+  install_circlecicli
   install_discord
   install_docker
   install_docker_compose

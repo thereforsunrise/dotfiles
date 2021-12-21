@@ -7,7 +7,6 @@ source "$HOME/.zsh/common"
 
 blueman-applet &
 dunst &
-google-chrome &
 gtk-redshift &
 imwheel -b "4 5" &
 nm-applet &
