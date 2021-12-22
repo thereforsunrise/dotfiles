@@ -14,6 +14,13 @@ alias gu='git add -u'
 alias mailq='msmtp-listqueue.sh'
 alias mailr='msmtp-runqueue.sh'
 
+mru() {
+  (
+    cd ~
+    mr update
+  )
+}
+
 [[ -e "$HOME/.secret" ]] && \
   source "$HOME/.secret"
 
