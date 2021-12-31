@@ -125,6 +125,24 @@ install_awscli() {
   )
 }
 
+install_bitwarden() {
+  is_binary_installed "/usr/local/bin/bw" && return 0
+
+  curl \
+    -s \
+    -L "https://github.com/bitwarden/cli/releases/download/v1.20.0/bw-linux-1.20.0.zip" \
+    -o "/tmp/bw-linux-1.20.0.zip"
+
+  (
+    cd /tmp || exit
+    unzip bw-linux-1.20.0.zip -d bw
+    sudo mv bw /opt
+  )
+
+  sudo ln -s /opt/bw/bw /usr/local/bin/bw
+  sudo chmod +x /usr/local/bin/bw
+}
+
 install_bootiso() {
   is_binary_installed "/usr/local/bin/bootiso" && return 0
 
@@ -452,6 +470,7 @@ install_packages() {
   install_atom
   install_aws_rotate_key
   install_awscli
+  install_bitwarden
   install_bootiso
   #install_brave
   #install_kindle
