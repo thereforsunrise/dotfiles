@@ -146,6 +146,7 @@ xfce4-terminal
 xfonts-terminus
 xosd-bin
 xsel
+xserver-xorg-input-libinput
 xz-utils
 zlib1g-dev
 zsh
