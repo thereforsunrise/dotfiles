@@ -459,6 +459,12 @@ install_youtubedl() {
   sudo chmod +x /usr/local/bin/youtube-dl
 }
 
+install_zoom() {
+  install_package_from_http_if_not_installed \
+    "zoom" \
+    "https://zoom.us/client/latest/zoom_amd64.deb"
+}
+
 install_packages() {
   log "Updating apt cache.."
   sudo apt-get update 1>/dev/null
@@ -499,6 +505,7 @@ install_packages() {
   install_sublime
   install_roam
   install_youtubedl
+  install_zoom
 }
 
 install_python_packages() {
