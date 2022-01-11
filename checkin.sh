@@ -551,8 +551,9 @@ install_cron() {
 
 install_crons() {
   log "Installing crons..."
-  install_cron "*/5 * * * *" "dyndns.sh '$UPDATE_URL' '$UPDATE_SECRET' '$(hostname -s)'"
-  install_cron "*/5 * * * *" "dyndns.sh '$UPDATE_URL' '$UPDATE_SECRET' '$(hostname -s)-int' 'internal'"
+  install_cron "*/1 * * * *" "$HOME/Projects/thereforsunrise/scripts/runqueue.sh"
+  install_cron "*/5 * * * *" "$HOME/Projects/thereforsunrise/scripts/dyndns.sh '$UPDATE_URL' '$UPDATE_SECRET' '$(hostname -s)'"
+  install_cron "*/5 * * * *" "$HOME/Projects/thereforsunrise/scripts/dyndns.sh '$UPDATE_URL' '$UPDATE_SECRET' '$(hostname -s)-int' 'internal'"
 }
 
 change_shell() {
