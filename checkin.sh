@@ -554,6 +554,7 @@ install_crons() {
   install_cron "*/1 * * * *" "$HOME/Projects/thereforsunrise/scripts/runqueue.sh"
   install_cron "*/5 * * * *" "$HOME/Projects/thereforsunrise/scripts/dyndns.sh '$UPDATE_URL' '$UPDATE_SECRET' '$(hostname -s)'"
   install_cron "*/5 * * * *" "$HOME/Projects/thereforsunrise/scripts/dyndns.sh '$UPDATE_URL' '$UPDATE_SECRET' '$(hostname -s)-int' 'internal'"
+  install_cron "*/30 * * * *" "bash -c '$HOME/Projects/thereforsunrise/scripts/sunrise-and-sunset.sh' > '$HOME/.sunset-sunrise'"
 }
 
 change_shell() {

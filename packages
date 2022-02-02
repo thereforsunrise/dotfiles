@@ -28,6 +28,7 @@ fonts-hack
 fonts-inconsolata
 fonts-terminus
 freecad
+geoip-bin
 git
 git-crypt
 gnupg
@@ -43,6 +44,7 @@ httperf
 httpie
 hunspell-en-gb
 hwinfo
+hxtools
 i3blocks
 i3lock
 i3-wm
@@ -99,6 +101,7 @@ parcellite
 pasystray
 pavucontrol
 pciutils
+perl-doc
 photoflare
 pulseaudio-utils
 pwgen
