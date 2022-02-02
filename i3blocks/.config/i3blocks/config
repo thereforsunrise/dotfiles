@@ -47,6 +47,16 @@ label=BAT
 #label=⚡
 interval=30
 
+[sunrise]
+label=sunrise
+command=jq -r '.sunrise' $HOME/.sunset-sunrise
+interval=5
+
+[sunset]
+label=sunset
+command=jq -r '.sunset' $HOME/.sunset-sunrise
+interval=5
+
 # Date Time
 #
 [time]
