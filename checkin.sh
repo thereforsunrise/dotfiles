@@ -459,6 +459,17 @@ install_youtubedl() {
   sudo chmod +x /usr/local/bin/youtube-dl
 }
 
+install_yq() {
+  is_binary_installed "/usr/local/bin/yq" && return 0
+
+  sudo curl \
+        -s \
+        -L https://github.com/mikefarah/yq/releases/download/v4.18.1/yq_linux_amd64 \
+        -o /usr/local/bin/yq
+
+  sudo chmod +x /usr/local/bin/yq
+}
+
 install_zoom() {
   install_package_from_http_if_not_installed \
     "zoom" \
@@ -505,6 +516,7 @@ install_packages() {
   install_sublime
   install_roam
   install_youtubedl
+  install_yq
   install_zoom
 }
 
