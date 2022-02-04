@@ -424,7 +424,7 @@ install_sublime() {
     sudo tee /etc/apt/sources.list.d/sublime-text.list
 
   sudo apt-get update && \
-    sudo apt-get install sublime-text
+    sudo apt-get install -y sublime-text
 }
 
 install_roam() {
@@ -446,6 +446,14 @@ install_roam() {
   t=$(mktemp)
   jq '.name="roam"' /opt/roam/resources/app/package.json  > "$t"
   sudo mv "$t" /opt/roam/resources/app/package.json
+}
+
+install_unetbootin() {
+  is_package_installed "unetbootin" && return 0
+
+  sudo add-apt-repository -y ppa:gezakovacs/ppa
+  sudo apt-get update && \
+    sudo apt-get install -y unetbootin
 }
 
 install_youtubedl() {
@@ -515,6 +523,7 @@ install_packages() {
   install_steam
   install_sublime
   install_roam
+  install_unetbootin
   install_youtubedl
   install_yq
   install_zoom
