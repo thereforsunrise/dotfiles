@@ -535,6 +535,11 @@ install_python_packages() {
   fi
 }
 
+install_atom_packages() {
+  echo "TODO"
+  apm install save-hooks
+}
+
 expand_templates() {
   find "$SCRIPTPATH" \
     -type f \
@@ -644,6 +649,7 @@ prompt_sudo
 setup_secret
 checkout_scripts
 install_packages
+install_atom_packages
 install_python_packages
 expand_templates
 run_stow
