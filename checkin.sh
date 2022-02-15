@@ -414,6 +414,26 @@ install_steam() {
     "https://cdn.akamai.steamstatic.com/client/installer/steam.deb"
 }
 
+install_steampipe() {
+  is_package_installed "/usr/local/bin/steampipe" && return 0
+
+  sudo /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/turbot/steampipe/main/install.sh)"
+}
+
+install_steampipe_plugins() {
+  plugins=<<EOF
+aws
+bitbucket
+steampipe
+EOF
+
+  for plugin in plugins; do
+    if steampipe plugin list | grep "$plugin" &>/dev/null; then
+      steampipe plugin install "$plugin"
+    fi
+  done
+}
+
 install_sublime() {
   is_package_installed "sublime-text" && return 0
 
@@ -521,6 +541,8 @@ install_packages() {
   install_slack
   install_spotify
   install_steam
+  install_steampipe
+  install_steampipe_plugins
   install_sublime
   install_roam
   install_unetbootin

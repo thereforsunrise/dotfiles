@@ -47,6 +47,10 @@ label=BAT
 #label=⚡
 interval=30
 
+[quote]
+command=cat $HOME/.quote
+interval=10
+
 [sunrise]
 label=sunrise
 command=jq -r '.sunrise' $HOME/.sunset-sunrise
