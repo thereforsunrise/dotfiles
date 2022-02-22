@@ -234,6 +234,18 @@ install_dropbox() {
     "https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd64.deb"
 }
 
+install_ecscli() {
+  is_binary_installed "/usr/local/bin/ecs-cli" && return 0
+
+  curl \
+    -s \
+    -L "https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest" \
+    -o "/tmp/ecs-cli"
+
+  sudo mv /tmp/ecs-cli /usr/local/bin/ecs-cli
+  sudo chmod 755 /usr/local/bin/ecs-cli
+}
+
 install_elixir() {
   is_package_installed "elixir" && return 0
 
@@ -415,7 +427,7 @@ install_steam() {
 }
 
 install_steampipe() {
-  is_package_installed "/usr/local/bin/steampipe" && return 0
+  is_binary_installed "/usr/local/bin/steampipe" && return 0
 
   sudo /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/turbot/steampipe/main/install.sh)"
 }
@@ -526,6 +538,7 @@ install_packages() {
   install_docker
   install_docker_compose
   install_dropbox
+  install_ecscli
   install_elixir
   install_espanso
   install_gh
