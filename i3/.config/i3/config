@@ -14,7 +14,7 @@ bindsym $mod+n exec rename-workspaces
 bindsym $mod+t exec pomo-dmenu
 bindsym $mod+y exec pomo "20" "pomodoro"
 
-bindsym Scroll_Lock exec dpms-toggle.sh
+#bindsym Scroll_Lock exec dpms-toggle.sh
 
 bindsym $mod+u exec set-wd-for-ws.sh
 

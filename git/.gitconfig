@@ -57,3 +57,8 @@
 
 [push]
   default = simple
+[cola]
+	spellcheck = false
+[user]
+	email = james.gray@mvfglobal.com
+	name = James Gray

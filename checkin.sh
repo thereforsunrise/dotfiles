@@ -189,6 +189,17 @@ install_circlecicli() {
     sudo bash
 }
 
+install_copilot() {
+  is_binary_installed "/usr/local/bin/copilot" & return 0
+
+  sudo curl \
+        -s \
+        -L "https://github.com/aws/copilot-cli/releases/latest/download/copilot-linux" \
+        -o /usr/local/bin/copilot
+
+  sudo chmod +x /usr/local/bin/copilot
+}
+
 install_discord() {
   install_package_from_http_if_not_installed \
     "discord" \
@@ -534,6 +545,7 @@ install_packages() {
   install_braindump
   install_cli53
   install_circlecicli
+  install_copilot
   install_discord
   install_docker
   install_docker_compose
@@ -571,7 +583,6 @@ install_python_packages() {
 }
 
 install_atom_packages() {
-  echo "TODO"
   apm install save-hooks
 }
 

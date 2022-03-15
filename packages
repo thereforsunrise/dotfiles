@@ -32,6 +32,7 @@ freerdp2-x11
 gddrescue
 geoip-bin
 git
+git-cola
 git-crypt
 gnupg
 gnupg2
@@ -129,6 +130,7 @@ screen
 scrot
 software-properties-common
 spell
+squashfs-tools
 ssh
 sshpass
 steam-libs-amd64:amd64
