@@ -399,6 +399,11 @@ install_rbenv() {
   git clone https://github.com/rbenv/ruby-build.git "$rbenv_path"/plugins/ruby-build
 }
 
+install_sessionmanager() {
+  install_package_from_http_if_not_installed \
+    "session-manager-plugin" \
+    "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb"
+}
 install_signal() {
   is_package_installed "signal-desktop" && return 0
 
@@ -562,6 +567,7 @@ install_packages() {
   install_nvm
   install_pulumi
   install_rbenv
+  install_sessionmanager
   install_signal
   install_slack
   install_spotify
