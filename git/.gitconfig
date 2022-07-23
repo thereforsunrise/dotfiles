@@ -62,3 +62,5 @@
 [user]
 	email = james.gray@mvfglobal.com
 	name = James Gray
+[branch]
+	autosetupmerge = true
