@@ -309,6 +309,21 @@ install_google_endpoint_verification() {
     sudo apt install endpoint-verification
 }
 
+install_jsonui() {
+  is_binary_installed "/usr/local/bin/jsonui" && return 0
+
+  curl \
+    -s \
+    -L "https://github.com/gulyasm/jsonui/releases/download/v1.0.1/jsonui_linux_amd64" \
+    -o "/tmp/jsonui"
+
+  (
+    cd /tmp || exit
+    sudo mv jsonui /usr/local/bin/jsonui
+    sudo chmod 755 /usr/local/bin/jsonui
+  )
+}
+
 install_k6() {
   is_package_installed "k6" && return 0
 
@@ -338,6 +353,21 @@ install_kindle() {
   t=$(mktemp)
   jq '.name="kindle"' /opt/kindle/resources/app/package.json  > "$t"
   sudo mv "$t" /opt/kindle/resources/app/package.json
+}
+
+install_mkcert() {
+  is_binary_installed "/usr/local/bin/mkcert" && return 0
+
+  curl \
+    -s \
+    -L "https://dl.filippo.io/mkcert/latest?for=linux/amd64" \
+    -o "/tmp/mkcert"
+
+  (
+    cd /tmp || exit
+    sudo mv mkcert /usr/local/bin/mkcert
+    sudo chmod 755 /usr/local/bin/mkcert
+  )
 }
 
 install_nvm() {
@@ -561,6 +591,7 @@ install_packages() {
   install_gh
   install_google_chrome
   install_google_endpoint_verification
+  install_jsonui
   install_k6
   install_lite
   install_logseq
@@ -629,7 +660,7 @@ install_cron() {
 
 install_crons() {
   log "Installing crons..."
-  install_cron "*/1 * * * *" "$HOME/Projects/thereforsunrise/scripts/runqueue.sh"
+  install_cron "*/5 * * * *" "$HOME/Projects/thereforsunrise/scripts/runqueue.sh"
   install_cron "*/5 * * * *" "$HOME/Projects/thereforsunrise/scripts/dyndns.sh '$UPDATE_URL' '$UPDATE_SECRET' '$(hostname -s)'"
   install_cron "*/5 * * * *" "$HOME/Projects/thereforsunrise/scripts/dyndns.sh '$UPDATE_URL' '$UPDATE_SECRET' '$(hostname -s)-int' 'internal'"
   install_cron "*/30 * * * *" "bash -c '$HOME/Projects/thereforsunrise/scripts/sunrise-and-sunset.sh' > '$HOME/.sunset-sunrise'"
