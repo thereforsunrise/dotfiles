@@ -1,9 +1,11 @@
 ack
+apt-file
 apt-listchanges
 apt-transport-https
 at
 autoconf
 autokey-gtk
+autossh
 bison
 blueman
 bsd-mailx
@@ -18,9 +20,11 @@ deborphan
 dialog
 direnv
 dmenu
+dos2unix
 dunst
 elinks
 emacs
+entr
 espeak
 evince
 extlinux
@@ -31,6 +35,7 @@ fonts-inconsolata
 fonts-terminus
 freecad
 freerdp2-x11
+fzf
 gddrescue
 geoip-bin
 git
@@ -41,6 +46,7 @@ gnupg2
 gnupg-agent
 golang
 gparted
+groff
 gtk-redshift
 guvcview
 gvfs
@@ -77,8 +83,10 @@ libgl1:amd64
 libgl1:i386
 libgl1-mesa-dri:amd64
 libgl1-mesa-dri:i386
+libmysql++-dev
 libncurses5-dev
 libnss3-tools
+libpq-dev
 libreadline6-dev
 libssl-dev
 libyaml-dev
@@ -96,10 +104,12 @@ msort
 mupdf
 mutt
 mysql-client
+mysql-client-core-8.0
 ncdu
 nestopia
 nmap
 npm
+nsnake
 offlineimap
 p7zip
 p7zip-full
@@ -129,6 +139,7 @@ rox-filer
 ruby
 ruby-dev
 screen
+screengrab
 scrot
 software-properties-common
 spell
