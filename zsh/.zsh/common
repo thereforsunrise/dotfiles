@@ -43,6 +43,7 @@ direnv
 docker
 docker-compose
 gem
+fzf
 heroku
 lein
 pip
