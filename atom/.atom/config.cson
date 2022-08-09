@@ -3,6 +3,15 @@
     autoHideMenuBar: true
     disabledPackages: [
       "github"
+      "slim-language"
+    ]
+    ignoredNames: [
+      ".git"
+      ".hg"
+      ".svn"
+      ".DS_Store"
+      "Thumbs.db"
+      "desktop.ini"
     ]
     telemetryConsent: "no"
     useTreeSitterParsers: false
