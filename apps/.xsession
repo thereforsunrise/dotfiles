@@ -22,4 +22,6 @@ xset dpms 0 0 0 && xset s noblank && xset s off
 [[ -e "$HOME/.xsession_$(hostname -s | tr '[:upper:]' '[:lower:]')" ]] && \
   source "$HOME/.xsession_$(hostname -s | tr '[:upper:]' '[:lower:]')"
 
+#xrandr --dpi 192
+
 exec i3

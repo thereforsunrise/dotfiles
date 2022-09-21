@@ -34,6 +34,7 @@ ffmpeg
 fonts-hack
 fonts-inconsolata
 fonts-terminus
+fotoxx
 freecad
 freerdp2-x11
 fzf
@@ -42,6 +43,7 @@ geoip-bin
 git
 git-cola
 git-crypt
+gnome-screenshot
 gnupg
 gnupg2
 gnupg-agent
@@ -163,6 +165,7 @@ tzwatch
 uchardet
 unattended-upgrades
 unzip
+usb-creator-gtk
 vdirsyncer
 vim-nox
 vlc
@@ -171,6 +174,7 @@ wbritish
 whois
 wimtools
 winetricks
+wkhtmltopdf
 xclip
 xdm
 xfce4-terminal
