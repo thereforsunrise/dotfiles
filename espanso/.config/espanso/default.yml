@@ -11,6 +11,29 @@ matches:
   - trigger: ":espanso"
     replace: "Hi there!"
 
+  - trigger: ":td"
+    replace: "[TODO]"
+
+  - trigger: ":qe"
+    replace: "[QUOTE]"
+
+  - trigger: ":ml"
+    replace: "[MEAL]"
+
+  - trigger: ":et"
+    replace: "[EVENT]"
+
+  - trigger: ":wl"
+    replace: "[WORKOUT] [Exercise] – [Weight] – [Sets] x [Reps]"
+
+  - trigger: ":dq"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: cat ~/dq.txt
+
   # Dates
   - trigger: ":datetime"
     replace: "{{mydate}}"
