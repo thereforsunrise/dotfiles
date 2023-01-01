@@ -34,6 +34,14 @@ matches:
         params:
           cmd: cat ~/dq.txt
 
+  - trigger: "Today"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: echo "Today $(date)"
+
   # Dates
   - trigger: ":datetime"
     replace: "{{mydate}}"

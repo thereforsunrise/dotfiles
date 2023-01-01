@@ -18,3 +18,5 @@ emacs() {
   (/usr/bin/emacs &)
 }
 
+eval "$(direnv hook zsh)"
+

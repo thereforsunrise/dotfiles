@@ -1,30 +1,10 @@
 "*":
   core:
     autoHideMenuBar: true
-    disabledPackages: [
-      "github"
-      "slim-language"
-    ]
-    ignoredNames: [
-      ".git"
-      ".hg"
-      ".svn"
-      ".DS_Store"
-      "Thumbs.db"
-      "desktop.ini"
-    ]
     telemetryConsent: "no"
-    useTreeSitterParsers: false
   editor:
-    fontSize: 25
+    fontSize: 24
   "exception-reporting":
-    userId: "b674d180-ee8a-4766-9d2c-640123c4c1cf"
-  "linter-terraform-syntax":
-    newVersion: true
-  "markdown-preview": {}
-  "one-dark-ui":
-    fontSize: 14
-  "tree-view":
-    hideVcsIgnoredFiles: true
+    userId: "e62046ed-bc40-4063-b199-832e96c0d68e"
   welcome:
     showOnStartup: false

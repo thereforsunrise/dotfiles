@@ -6,8 +6,10 @@ at
 autoconf
 autokey-gtk
 autossh
+bat
 bison
 blueman
+bmon
 bsd-mailx
 build-essential
 ca-certificates
@@ -25,10 +27,12 @@ dos2unix
 dunst
 elinks
 emacs
+endpoint-verification
 entr
 espeak
 evince
 extlinux
+extundelete
 feh
 ffmpeg
 fonts-hack
@@ -49,6 +53,7 @@ gnupg2
 gnupg-agent
 golang
 gparted
+gpg
 groff
 gtk-redshift
 guvcview
@@ -63,11 +68,16 @@ hxtools
 i3blocks
 i3lock
 i3-wm
+<<<<<<< HEAD
+=======
+igal2
+>>>>>>> stuff
 imagemagick
 imwheel
 inotify-tools
 iotop
 ipcalc
+iptraf
 jq
 keynav
 khal
@@ -97,6 +107,7 @@ libyaml-dev
 links
 lm-sensors
 ltris
+lxappearance
 markdown
 mate-polkit
 mednafen
@@ -183,6 +194,7 @@ xfonts-terminus
 xosd-bin
 xsel
 xserver-xorg-input-libinput
+xtrlock
 xz-utils
 yacpi
 zlib1g-dev

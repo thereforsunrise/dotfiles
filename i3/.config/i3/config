@@ -136,7 +136,7 @@ mode "$mode_system" {
 }
 bindsym F9 mode "$mode_system"
 bindsym Print exec screenshot.sh
-bindsym F10  exec toggle-sink.sh
+bindsym F10  exec lockkbmouse
 
 bindsym $mod+Prior exec volume.sh up
 bindsym $mod+Next exec volume.sh down
