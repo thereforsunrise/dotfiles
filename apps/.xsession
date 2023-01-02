@@ -7,14 +7,14 @@ source "$HOME/.zsh/common"
 
 blueman-applet &
 dunst &
-gtk-redshift &
+# gtk-redshift &
 imwheel -b "4 5" &
 nm-applet &
 parcellite &
 pasystray &
 xsetroot -solid '#282A36' &
 setxkbmap -option caps:escape &
-xset r rate 290 40 &
+xset r rate 300 50 &
 # just keep my bloody screen on! I will turn it off with the switch
 xset dpms 0 0 0 && xset s noblank && xset s off
 
@@ -22,6 +22,6 @@ xset dpms 0 0 0 && xset s noblank && xset s off
 [[ -e "$HOME/.xsession_$(hostname -s | tr '[:upper:]' '[:lower:]')" ]] && \
   source "$HOME/.xsession_$(hostname -s | tr '[:upper:]' '[:lower:]')"
 
-#xrandr --dpi 192
+#xrandr --dpi 162
 
 exec i3

@@ -4,6 +4,10 @@
 # according to stack overflow :-(
 SCRIPTPATH="$(cd "$(dirname "$0")" || exit >/dev/null 2>&1 ; pwd -P)"
 
+export DEBIAN_FRONTEND=noninteractive
+
+set -e
+
 log() {
   echo -e "[$(date --iso-8601=minutes)] \t ${1}"
 }
@@ -12,17 +16,12 @@ create_standard_dirs() {
   rm -rf ~/Desktop ~/Documents ~/Downloads ~/Music \
     ~/Pictures ~/Public ~/Templates ~/Videos/
 
-  mkdir -p "$HOME/Projects/$WORK_COMPANY_NAME"
+  mkdir -p "$HOME/Projects/$WORK_COMPANY_NAME/"
   mkdir -p "$HOME/.msmtpqueue"
   mkdir -p "$HOME/Mail/.mutt"
 
-  if [ ! -L "$HOME/Projects/thereforsunrise/dotfiles" ]; then
-    ln -s "$HOME/.dotfiles/" "$HOME/Projects/thereforsunrise/dotfiles"
-  fi
-
-  if [ ! -L "$HOME/Projects/work" ]; then
-    ln -s "$HOME/Projects/$WORK_COMPANY_NAME" "$HOME/Projects/work"
-  fi
+  #ln -s "$HOME/.dotfiles/" "$HOME/Projects/thereforsunrise/dotfiles"
+  #ln -s "$HOME/Projects/$WORK_COMPANY_NAME" "$HOME/Projects/work"
 }
 
 prompt_sudo() {
@@ -567,16 +566,13 @@ install_packages() {
   sudo apt-get update 1>/dev/null
 
   cat "$SCRIPTPATH/packages" "packages.$(hostname -s | tr '[:upper:]' '[:lower:]')" 2>/dev/null | \
-    xargs sudo apt-get install -y 1>/dev/null
+    xargs sudo DEBIAN_FRONTEND=noninteractive  apt-get install -y 1>/dev/null
 
   install_antigen
   install_atom
   install_aws_rotate_key
   install_awscli
   install_bitwarden
-  install_bootiso
-  #install_brave
-  #install_kindle
   install_braindump
   install_cli53
   install_circlecicli
@@ -586,11 +582,9 @@ install_packages() {
   install_docker_compose
   install_dropbox
   install_ecscli
-  install_elixir
   install_espanso
   install_gh
   install_google_chrome
-  install_google_endpoint_verification
   install_jsonui
   install_k6
   install_lite
@@ -605,7 +599,6 @@ install_packages() {
   install_steam
   install_steampipe
   install_steampipe_plugins
-  install_sublime
   install_roam
   install_unetbootin
   install_youtubedl
@@ -742,5 +735,5 @@ change_shell
 copy_msmtp_scripts
 generate_mrconfig
 allow_passwordless_sudo_for_current_user
-configure_thinkfan
+#configure_thinkfan
 generate_secret_example
