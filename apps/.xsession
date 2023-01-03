@@ -7,7 +7,7 @@ source "$HOME/.zsh/common"
 
 blueman-applet &
 dunst &
-# gtk-redshift &
+gtk-redshift &
 imwheel -b "4 5" &
 nm-applet &
 parcellite &
