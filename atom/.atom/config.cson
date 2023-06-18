@@ -3,7 +3,7 @@
     autoHideMenuBar: true
     telemetryConsent: "no"
   editor:
-    fontSize: 24
+    fontSize: 22
   "exception-reporting":
     userId: "e62046ed-bc40-4063-b199-832e96c0d68e"
   welcome:

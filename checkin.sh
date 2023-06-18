@@ -12,6 +12,7 @@ create_standard_dirs() {
   rm -rf ~/Desktop ~/Documents ~/Downloads ~/Music \
     ~/Pictures ~/Public ~/Templates ~/Videos/
 
+  mkdir -p "$HOME/Projects/$GITHUB_USERNAME"
   mkdir -p "$HOME/Projects/$WORK_COMPANY_NAME"
   mkdir -p "$HOME/.msmtpqueue"
   mkdir -p "$HOME/Mail/.mutt"
@@ -534,6 +535,17 @@ install_unetbootin() {
     sudo apt-get install -y unetbootin
 }
 
+install_vagrant() {
+  is_package_installed "vagrant" && return 0
+
+  wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | \
+    sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+  echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
+    sudo tee /etc/apt/sources.list.d/hashicorp.list
+  sudo apt update && \
+    sudo apt install -y vagrant
+}
+
 install_youtubedl() {
   is_binary_installed "/usr/local/bin/youtube-dl" && return 0
 
@@ -598,6 +610,7 @@ install_packages() {
   install_nvm
   install_pulumi
   install_rbenv
+  install_roam
   install_sessionmanager
   install_signal
   install_slack
@@ -606,8 +619,8 @@ install_packages() {
   install_steampipe
   install_steampipe_plugins
   install_sublime
-  install_roam
   install_unetbootin
+  install_vagrant
   install_youtubedl
   install_yq
   install_zoom

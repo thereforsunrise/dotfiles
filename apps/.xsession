@@ -13,12 +13,13 @@ parcellite &
 pasystray &
 xsetroot -solid '#282A36'
 setxkbmap -option caps:escape
-xset r rate 300 60
+xset r rate 300 70
 # just keep my bloody screen on! I will turn it off with the switch
 xset dpms 0 0 0
 xset s noblank
 xset s off
 xrdb ~/.Xresources
+cbatticon &
 
 # shellcheck disable=SC1090
 [[ -e "$HOME/.xsession_$(hostname -s | tr '[:upper:]' '[:lower:]')" ]] && \
