@@ -582,7 +582,7 @@ install_packages() {
   install_docker_compose
   install_dropbox
   install_ecscli
-  install_espanso
+  #install_espanso
   install_gh
   install_google_chrome
   install_jsonui
@@ -724,9 +724,9 @@ create_standard_dirs
 prompt_sudo
 setup_secret
 checkout_scripts
-install_packages
-install_atom_packages
-install_python_packages
+#install_packages
+#install_atom_packages
+#install_python_packages
 expand_templates
 run_stow
 install_crons

@@ -17,3 +17,5 @@ emacs() {
   (/usr/bin/emacs &)
 }
 
+export PATH="$PATH:$HOME/Projects/work/dev-scripts/"
+
