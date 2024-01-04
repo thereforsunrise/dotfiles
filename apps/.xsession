@@ -2,18 +2,16 @@
 
 # shellcheck disable=SC1091
 source "$HOME/.zsh/common" &
-"$HOME/.dropbox-dist/dropboxd" &
+
+
+if [[ "$ENABLE_DROPBOX" == "true" ]]; then
+    "$HOME/.dropbox-dist/dropboxd" &
+fi
 
 dunst &
 imwheel -b "4 5" &
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 unclutter -idle 1 &
-
-#nm-applet &
-#blueman-applet &
-##parcellite &
-#pasystray &
-#cbatticon &
 
 xsetroot -solid '#282A36' &
 setxkbmap -option caps:escape & 

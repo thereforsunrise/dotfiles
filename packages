@@ -2,12 +2,16 @@ at
 build-essential
 dunst
 feh
+i3
+i3blocks
 i3lock
 mupdf
 nmap
+policykit-1-gnome
 pwgen
 ssh
 stow
 tree
-xfce4-panel
+unclutter
+vim-nox
 zsh
