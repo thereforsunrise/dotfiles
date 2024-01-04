@@ -1,5 +1,4 @@
-
-export PATH="$HOME/.rbenv/bin:$HOME/.local/bin:$PATH"
+export PATH="$HOME/thereforsunrise/scripts:$HOME/.local/bin:$PATH"
 
 alias acs='sudo apt-cache search'
 alias agu='sudo apt-get update'
@@ -8,15 +7,12 @@ alias down='shutdown now'
 alias halt='shutdown now'
 alias mr='mr -j10'
 
-eval "$(rbenv init -)"
+eval "$(~/.rbenv/bin/rbenv init - zsh)"
 
 export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-source "$NVM_DIR/nvm.sh"
-
-emacs() {
-  (/usr/bin/emacs &)
-}
+[ -f ~/.dir_colors ] && eval $(dircolors ~/.dir_colors)
 
 eval "$(direnv hook zsh)"
-

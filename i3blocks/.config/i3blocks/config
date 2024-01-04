@@ -42,14 +42,19 @@ markup=none
 # Battery indicator
 #
 # The battery instance defaults to 0.
-[battery]
-label=BAT
+#[battery]
+#label=BAT
 #label=⚡
-interval=30
+#interval=30
 
-[quote]
-command=cat $HOME/.quote
-interval=10
+#[quote]
+#command=cat $HOME/.quote
+#interval=10
+
+#[moon]
+#label=moon
+#command=cat $HOME/.moon
+#interval=5
 
 [sunrise]
 label=sunrise
